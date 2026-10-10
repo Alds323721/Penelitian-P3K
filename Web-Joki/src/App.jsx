@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Home from './Pages/Home'
 import Materi from './Pages/Materi'
 import PageSkeleton from './components/PageSkeleton'
+import SmoothScroll from './components/SmoothScroll'
 import './index.css'
 
 function App() {
@@ -73,27 +74,29 @@ function App() {
   }
 
   return (
-    <>
-      {isTransitioning ? (
-        <PageSkeleton targetPage={targetPage} />
-      ) : (
-        <div key={`${currentPage}-${lang}`} className="page-enter">
-          {currentPage === 'Materi' ? (
-            <Materi
-              onNavigate={handleNavigate}
-              lang={lang}
-              onLanguageChange={handleLanguageChange}
-            />
-          ) : (
-            <Home
-              onNavigate={handleNavigate}
-              lang={lang}
-              onLanguageChange={handleLanguageChange}
-            />
-          )}
-        </div>
-      )}
-    </>
+    <SmoothScroll>
+      <div className="min-h-screen bg-[#131313] text-[#FFFFFF] font-sans selection:bg-[#353534] selection:text-[#FFFFFF]">
+        {isTransitioning ? (
+          <PageSkeleton targetPage={targetPage} />
+        ) : (
+          <div key={`${currentPage}-${lang}`} className="page-enter">
+            {currentPage === 'Materi' ? (
+              <Materi
+                onNavigate={handleNavigate}
+                lang={lang}
+                onLanguageChange={handleLanguageChange}
+              />
+            ) : (
+              <Home
+                onNavigate={handleNavigate}
+                lang={lang}
+                onLanguageChange={handleLanguageChange}
+              />
+            )}
+          </div>
+        )}
+      </div>
+    </SmoothScroll>
   )
 }
 

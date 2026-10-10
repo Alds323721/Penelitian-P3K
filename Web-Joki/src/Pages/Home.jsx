@@ -1,9 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import aryaHeroImg from '../assets/arya-pratama.jpg';
+import CaduceusBackground3D from '../components/CaduceusBackground3D';
+import CaduceusScrollyHero from '../components/CaduceusScrollyHero';
 import LanguageDropdown from '../components/LanguageDropdown';
 import { translations } from '../locales/translations';
 
 export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
+  // Full page 3D background mouse tracking
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springConfig = { damping: 24, stiffness: 120, mass: 0.6 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
+
+  useEffect(() => {
+    const handleWindowMouseMove = (e) => {
+      const x = e.clientX / window.innerWidth - 0.5;
+      const y = e.clientY / window.innerHeight - 0.5;
+      mouseX.set(x);
+      mouseY.set(y);
+    };
+
+    window.addEventListener('mousemove', handleWindowMouseMove);
+    return () => window.removeEventListener('mousemove', handleWindowMouseMove);
+  }, [mouseX, mouseY]);
   // State for interactive segmented nav
   const [activeTab, setActiveTab] = useState('Home');
 
@@ -83,157 +104,25 @@ export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
         </div>
       </header>
 
-      <main>
+      {/* ========================================================= */}
+      {/* FULL PAGE 3D CADUCEUS BACKGROUND (Below Header, Above Footer) */}
+      {/* ========================================================= */}
+      <div className="fixed top-16 inset-x-0 bottom-0 pointer-events-none z-0 flex items-center justify-center overflow-hidden">
+        <div className="w-[620px] h-[620px] sm:w-[780px] sm:h-[780px] lg:w-[960px] lg:h-[960px] max-w-[95vw] max-h-[92vh] flex items-center justify-center">
+          <CaduceusBackground3D smoothX={smoothX} smoothY={smoothY} opacity={0.65} />
+        </div>
+      </div>
+
+      <main className="relative z-10">
         {/* ========================================================= */}
-        {/* 2. HERO SECTION */}
+        {/* 2. HERO SCROLLYTELLING 3D (Obsidian Precision) */}
         {/* ========================================================= */}
-        <section className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-12 sm:pt-16 md:pt-20 pb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-            {/* Left Hero Content (7 Cols Desktop) */}
-            <div className="lg:col-span-7 flex flex-col">
-              {/* Eyebrow */}
-              <div className="flex items-center gap-2 mb-4">
-                <svg
-                  className="w-3.5 h-3.5 text-[#8A8A8A]"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M12 0L14.8 9.2L24 12L14.8 14.8L12 24L9.2 14.8L0 12L9.2 9.2L12 0Z" />
-                </svg>
-                <span className="text-xs sm:text-[13px] font-medium text-[#8A8A8A] tracking-normal">
-                  {t.hero.eyebrow}
-                </span>
-              </div>
+        <CaduceusScrollyHero
+          lang={lang}
+          translations={translations}
+          onNavigate={navigateTo}
+        />
 
-              {/* H1 Heading */}
-              <h1 className="text-3xl sm:text-4xl md:text-[46px] font-bold text-white leading-[1.12] tracking-[-0.03em] mb-6">
-                {t.hero.title}
-              </h1>
-
-              {/* Subtitle */}
-              <p className="text-sm sm:text-base text-[#8A8A8A] leading-relaxed mb-8 max-w-2xl">
-                {t.hero.subtitle}
-              </p>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-10">
-                <button
-                  type="button"
-                  onClick={() => navigateTo('Materi')}
-                  className="bg-white hover:bg-[#E5E5E5] text-[#0A0A0A] font-semibold text-sm px-5 py-3 rounded-lg flex items-center justify-center gap-2 transition-all shadow-md group cursor-pointer"
-                >
-                  <span>{t.hero.ctaPrimary}</span>
-                  <svg
-                    className="w-4 h-4 transition-transform group-hover:translate-x-1"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                    />
-                  </svg>
-                </button>
-
-                <a
-                  href="#cv"
-                  className="bg-[#141414] hover:bg-[#1E1E1E] text-[#EDEDED] border border-[#262626] hover:border-[#383838] font-medium text-sm px-5 py-3 rounded-lg flex items-center justify-center gap-2.5 transition-all"
-                >
-                  <svg
-                    className="w-4 h-4 text-[#8A8A8A]"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
-                    />
-                  </svg>
-                  <span>{t.hero.ctaSecondary}</span>
-                </a>
-              </div>
-
-              {/* Compliance & Alignment Badges */}
-              <div className="flex flex-wrap items-center gap-y-2 gap-x-3 text-xs text-[#8A8A8A]">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
-                  <span>{t.hero.badges.aha}</span>
-                </div>
-                <span className="text-[#353534]">•</span>
-                <div className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
-                  <span>{t.hero.badges.kemenaker}</span>
-                </div>
-                <span className="text-[#353534]">•</span>
-                <div className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
-                  <span>{t.hero.badges.cc}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Hero Card / 3D Model Viewport (5 Cols Desktop) */}
-            <div className="lg:col-span-5">
-              <div className="bg-[#141414] border border-[#262626] rounded-2xl p-4 sm:p-5 shadow-2xl relative">
-                {/* Visual Viewport Box */}
-                <div className="relative rounded-xl overflow-hidden bg-[#0A0A0A] border border-[#262626] aspect-square flex items-center justify-center group">
-                  <img
-                    src={aryaHeroImg}
-                    alt="Arya Pratama - Foto Model Peneliti P3K"
-                    className="w-full h-full object-cover object-top filter grayscale contrast-110 brightness-95 transition-transform duration-700 group-hover:scale-105"
-                  />
-                  {/* Subtle Top Shadow Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none" />
-
-                  {/* 3D Viewport Pill Overlay */}
-                  <div className="absolute bottom-3.5 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-[#141414]/90 backdrop-blur-md border border-[#333333] px-3.5 py-1.5 rounded-full text-[11px] font-medium text-[#EDEDED] shadow-lg whitespace-nowrap">
-                    <span className="w-2 h-2 rounded-full bg-[#8E9192]"></span>
-                    <span>{t.hero.viewportLabel}</span>
-                  </div>
-                </div>
-
-                {/* Field Metrics Panel */}
-                <div className="mt-4 bg-[#1c1b1b] border border-[#262626] rounded-xl p-4 flex flex-col gap-3">
-                  {/* Metric Header */}
-                  <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-semibold tracking-wider text-[#8A8A8A] uppercase">
-                      {t.hero.metricsHeader}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#10B981] bg-[#10B981]/10 px-2 py-0.5 rounded-full border border-[#10B981]/20">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
-                      {t.hero.activeAudit}
-                    </span>
-                  </div>
-
-                  {/* Primary Focus Sub-Card */}
-                  <div className="bg-[#141414] border border-[#262626] rounded-lg p-3">
-                    <div className="text-[11px] text-[#8A8A8A] mb-0.5">{t.hero.focusLabel}</div>
-                    <div className="text-sm font-bold text-white">{t.hero.focusValue}</div>
-                  </div>
-
-                  {/* Accuracy Stats Row */}
-                  <div className="flex items-center justify-between pt-1">
-                    <div>
-                      <div className="text-xs sm:text-[13px] font-semibold text-[#EDEDED]">
-                        {t.hero.accuracyLabel}
-                      </div>
-                      <div className="text-[11px] text-[#8A8A8A]">{t.hero.accuracySub}</div>
-                    </div>
-                    <div className="text-3xl sm:text-4xl font-bold text-white tabular-nums tracking-tight">
-                      {t.hero.accuracyValue}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* ========================================================= */}
         {/* 3. MARQUEE / TICKER BANNER */}
@@ -291,9 +180,19 @@ export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
                   </svg>
                 </div>
 
-                <h3 className="text-lg font-bold text-white mb-3">
-                  {t.bento.card1.title}
-                </h3>
+                <div className="flex items-center gap-3.5 mb-4">
+                  <img
+                    src={aryaHeroImg}
+                    alt="Arya Pratama"
+                    className="w-12 h-12 rounded-xl object-cover object-top border border-[#262626] filter grayscale contrast-110 shrink-0"
+                  />
+                  <div>
+                    <h3 className="text-lg font-bold text-white">
+                      {t.bento.card1.title}
+                    </h3>
+                    <p className="text-xs text-[#8A8A8A]">Arya Pratama • Peneliti P3K & K3</p>
+                  </div>
+                </div>
 
                 <p className="text-sm text-[#8A8A8A] leading-relaxed mb-6">
                   {t.bento.card1.body}
@@ -447,9 +346,11 @@ export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
 
               {/* Author Attribution */}
               <div className="flex items-center gap-3 relative z-10 pt-4 border-t border-[#262626]">
-                <div className="w-9 h-9 rounded-full bg-[#1c1b1b] border border-[#333333] flex items-center justify-center text-xs font-bold text-white">
-                  AP
-                </div>
+                <img
+                  src={aryaHeroImg}
+                  alt="Arya Pratama"
+                  className="w-10 h-10 rounded-full object-cover object-top border border-[#333333] filter grayscale contrast-110"
+                />
                 <div>
                   <div className="text-sm font-bold text-white">{t.bento.card4.author}</div>
                   <div className="text-xs text-[#8A8A8A]">{t.bento.card4.role}</div>
@@ -721,7 +622,7 @@ export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
       {/* ========================================================= */}
       {/* 9. FOOTER */}
       {/* ========================================================= */}
-      <footer className="w-full border-t border-[#262626] bg-[#0E0E0E] py-8 mt-12">
+      <footer className="relative z-20 w-full border-t border-[#262626] bg-[#0E0E0E] py-8 mt-12">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#8A8A8A]">
           <div>
             {t.footer.copy}
