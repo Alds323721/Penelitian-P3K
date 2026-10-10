@@ -1,19 +1,102 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
+import React, { useState, useEffect } from 'react'
+import Home from './Pages/Home'
+import Materi from './Pages/Materi'
+import PageSkeleton from './components/PageSkeleton'
 import './index.css'
 
 function App() {
+  const getInitialPage = () => {
+    if (typeof window !== 'undefined') {
+      const path = window.location.pathname.toLowerCase()
+      if (path === '/materi' || path.startsWith('/materi/')) {
+        return 'Materi'
+      }
+    }
+    return 'Home'
+  }
 
+  const [currentPage, setCurrentPage] = useState(getInitialPage)
+  const [isTransitioning, setIsTransitioning] = useState(false)
+  const [targetPage, setTargetPage] = useState(getInitialPage)
+  const [lang, setLang] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('site_lang') || 'id'
+    }
+    return 'id'
+  })
+
+  const handleLanguageChange = (newLang) => {
+    setLang(newLang)
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('site_lang', newLang)
+    }
+  }
+
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname.toLowerCase()
+      const newPage = path === '/materi' || path.startsWith('/materi/') ? 'Materi' : 'Home'
+      
+      setIsTransitioning(true)
+      setTargetPage(newPage)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+
+      setTimeout(() => {
+        setCurrentPage(newPage)
+        setIsTransitioning(false)
+      }, 400)
+    }
+
+    window.addEventListener('popstate', handlePopState)
+    return () => window.removeEventListener('popstate', handlePopState)
+  }, [])
+
+  const handleNavigate = (page) => {
+    if (page === currentPage && !isTransitioning) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      return
+    }
+
+    setIsTransitioning(true)
+    setTargetPage(page)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+
+    const targetUrl = page === 'Materi' ? '/Materi' : '/'
+    if (window.location.pathname !== targetUrl) {
+      window.history.pushState(null, '', targetUrl)
+    }
+
+    setTimeout(() => {
+      setCurrentPage(page)
+      setIsTransitioning(false)
+    }, 450)
+  }
 
   return (
     <>
-      <div className="bg-gray-50 w-screen h-screen flex justify-center items-center">
-        <h1 className="text-3xl font-bold underline text-blue-600">Web-Joki</h1>
-      </div>
+      {isTransitioning ? (
+        <PageSkeleton targetPage={targetPage} />
+      ) : (
+        <div key={`${currentPage}-${lang}`} className="page-enter">
+          {currentPage === 'Materi' ? (
+            <Materi
+              onNavigate={handleNavigate}
+              lang={lang}
+              onLanguageChange={handleLanguageChange}
+            />
+          ) : (
+            <Home
+              onNavigate={handleNavigate}
+              lang={lang}
+              onLanguageChange={handleLanguageChange}
+            />
+          )}
+        </div>
+      )}
     </>
   )
 }
 
 export default App
+
+
