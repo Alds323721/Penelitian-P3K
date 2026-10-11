@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { useMotionValue, useSpring } from 'framer-motion';
 import aryaHeroImg from '../assets/arya-pratama.jpg';
 import CaduceusBackground3D from '../components/CaduceusBackground3D';
 import CaduceusScrollyHero from '../components/CaduceusScrollyHero';
-import LanguageDropdown from '../components/LanguageDropdown';
+import Navbar from '../components/Navbar';
 import { translations } from '../locales/translations';
 
 export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
@@ -25,8 +25,6 @@ export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
     window.addEventListener('mousemove', handleWindowMouseMove);
     return () => window.removeEventListener('mousemove', handleWindowMouseMove);
   }, [mouseX, mouseY]);
-  // State for interactive segmented nav
-  const [activeTab, setActiveTab] = useState('Home');
 
   // State for interactive FAQ accordion
   const [openFaq, setOpenFaq] = useState(0); // 0 is open by default like the mockup
@@ -49,60 +47,14 @@ export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
   return (
     <div className="min-h-screen bg-[#131313] text-[#EDEDED] font-sans selection:bg-white selection:text-black">
       {/* ========================================================= */}
-      {/* 1. STICKY TOP NAVBAR */}
+      {/* 1. STICKY TOP NAVBAR (MOBILE & IPAD RESPONSIVE) */}
       {/* ========================================================= */}
-      <header className="sticky top-0 z-50 w-full bg-[#131313]/85 backdrop-blur-md border-b border-[#262626]">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
-          {/* Brand Left */}
-          <div
-            onClick={() => navigateTo('Home')}
-            className="flex items-center gap-2 shrink-0 cursor-pointer hover:opacity-85 transition-opacity"
-          >
-            <svg
-              className="w-4 h-4 text-white"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="M12 0L14.8 9.2L24 12L14.8 14.8L12 24L9.2 14.8L0 12L9.2 9.2L12 0Z" />
-            </svg>
-            <span className="text-xs sm:text-[13px] font-semibold tracking-wider text-white">
-              {t.nav.profile}
-            </span>
-          </div>
-
-          {/* Segmented Center Control (Desktop & Tablet) */}
-          <div className="hidden sm:flex items-center bg-[#1c1b1b] border border-[#262626] rounded-full p-1">
-            <button
-              onClick={() => navigateTo('Home')}
-              className={`px-4 py-1 text-xs font-medium rounded-full transition-all cursor-pointer ${
-                activeTab === 'Home'
-                  ? 'bg-[#2a2a2a] text-white shadow-sm border border-[#3a3939]'
-                  : 'text-[#8A8A8A] hover:text-[#EDEDED]'
-              }`}
-            >
-              {t.nav.home}
-            </button>
-            <button
-              onClick={() => navigateTo('Materi')}
-              className={`px-4 py-1 text-xs font-medium rounded-full transition-all cursor-pointer ${
-                activeTab === 'Materi'
-                  ? 'bg-[#2a2a2a] text-white shadow-sm border border-[#3a3939]'
-                  : 'text-[#8A8A8A] hover:text-[#EDEDED]'
-              }`}
-            >
-              {t.nav.materi}
-            </button>
-          </div>
-
-          {/* Language Switcher Dropdown Right (Replaces old collab pill, AP, and user icon) */}
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            <LanguageDropdown
-              currentLang={lang}
-              onLanguageChange={onLanguageChange}
-            />
-          </div>
-        </div>
-      </header>
+      <Navbar
+        currentPage="Home"
+        onNavigate={navigateTo}
+        lang={lang}
+        onLanguageChange={onLanguageChange}
+      />
 
       {/* ========================================================= */}
       {/* FULL PAGE 3D CADUCEUS BACKGROUND (Below Header, Above Footer) */}
