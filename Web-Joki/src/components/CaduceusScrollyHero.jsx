@@ -1,28 +1,13 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useMemo } from "react";
 import { motion, useScroll, useTransform, useSpring, useReducedMotion } from "framer-motion";
 import caduceusChrome from "../assets/caduceus-chrome.png";
 import aryaHeroImg from "../assets/arya-pratama.jpg";
+import { useDeviceDetect } from "../hooks/useDeviceDetect";
 
 export default function CaduceusScrollyHero({ lang = "id", translations, onNavigate }) {
   const containerRef = useRef(null);
   const shouldReduceMotion = useReducedMotion();
-
-  // Deteksi layar desktop (>= 768px) vs mobile (< 768px) untuk arah gerak split
-  const [isDesktop, setIsDesktop] = useState(() => {
-    if (typeof window !== "undefined") {
-      return window.innerWidth >= 768;
-    }
-    return false;
-  });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 768);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const { isTouch, isDesktop } = useDeviceDetect();
 
   // 1. Tangkap posisi scroll relatif terhadap kontainer 360vh
   const { scrollYProgress } = useScroll({
@@ -30,22 +15,25 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
     offset: ["start start", "end end"],
   });
 
-  // 2. Berikan redaman pegas (spring physics) agar pergerakan terasa organik
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 90,
-    damping: 26,
-    restDelta: 0.0008,
-  });
+  // 2. Berikan redaman pegas (spring physics) adaptif
+  // Touch device butuh damping lebih tinggi agar tidak ada "ringing" / oscillation saat swipe cepat
+  const springConfig = useMemo(() => {
+    return isTouch
+      ? { stiffness: 120, damping: 30, restDelta: 0.001 }
+      : { stiffness: 90, damping: 26, restDelta: 0.0008 };
+  }, [isTouch]);
+
+  const smoothProgress = useSpring(scrollYProgress, springConfig);
 
   // --------------------------------------------------------------------------
   // Koreografi Gerak (Scroll-Driven Choreography)
   // --------------------------------------------------------------------------
 
-  // A. Judul Display Hero (Desktop: Split Kiri & Kanan; Mobile: Meluncur ke Atas & Bawah)
+  // A. Judul Display Hero (Desktop: Split Kiri & Kanan; Mobile: Meluncur ke Atas & Bawah secara proporsional)
   const titleLeftX = useTransform(smoothProgress, [0, 0.2], ["0%", "-110%"]);
   const titleRightX = useTransform(smoothProgress, [0, 0.2], ["0%", "110%"]);
-  const titleMobileTopY = useTransform(smoothProgress, [0, 0.2], ["0px", "-80px"]);
-  const titleMobileBottomY = useTransform(smoothProgress, [0, 0.2], ["0px", "80px"]);
+  const titleMobileTopY = useTransform(smoothProgress, [0, 0.2], ["0px", "-50px"]);
+  const titleMobileBottomY = useTransform(smoothProgress, [0, 0.2], ["0px", "50px"]);
   const heroOpacity = useTransform(smoothProgress, [0, 0.16], [1, 0]);
 
   // B. Simbol Caduceus Krom 3D (0.00 -> 1.00)
@@ -54,13 +42,13 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
   const caduceusY = useTransform(smoothProgress, [0, 0.22, 0.65, 1], ["0%", "0%", "0%", "2%"]);
   const caduceusRotateZ = useTransform(smoothProgress, [0, 0.5, 1], [0, -2, 2]);
 
-  // C. Manifesto Riset 3D Tilt (Posisi Sisi Kiri: 0.20 -> 0.58 - Gambar 1)
+  // C. Manifesto Riset 3D Tilt (Posisi Sisi Kiri: 0.20 -> 0.58)
   const manifestoOpacity = useTransform(smoothProgress, [0.20, 0.28, 0.52, 0.58], [0, 1, 1, 0]);
   const manifestoRotateX = useTransform(smoothProgress, [0.20, 0.28, 0.58], [24, 0, -20]);
   const manifestoY = useTransform(smoothProgress, [0.20, 0.28, 0.58], [30, 0, -30]);
   const manifestoScale = useTransform(smoothProgress, [0.20, 0.28, 0.58], [0.95, 1, 0.96]);
 
-  // D. Telemetri Metrik Kuantitatif (Posisi Sisi Kiri: 0.60 -> 0.94 - Gambar 2)
+  // D. Telemetri Metrik Kuantitatif (Posisi Sisi Kiri: 0.60 -> 0.94)
   const metricsOpacity = useTransform(smoothProgress, [0.60, 0.68, 0.88, 0.94], [0, 1, 1, 0]);
   const metricsY = useTransform(smoothProgress, [0.60, 0.68, 0.94], [30, 0, -30]);
 
@@ -99,6 +87,7 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
   return (
     <section
       ref={containerRef}
+      style={{ contain: "layout style" }}
       className="relative h-[360vh] bg-[#0A0A0A] w-full selection:bg-[#353534] selection:text-[#FFFFFF]"
     >
       {/* Layar Sticky Viewport Terkunci */}
@@ -109,6 +98,7 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
           style={{
             scale: shouldReduceMotion ? 1 : glowScale,
             opacity: glowOpacity,
+            willChange: "transform, opacity",
           }}
           className="pointer-events-none absolute h-[320px] w-[320px] sm:h-[460px] sm:w-[460px] md:h-[540px] md:w-[540px] lg:h-[640px] lg:w-[640px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.22)_0%,rgba(186,215,255,0.08)_38%,rgba(10,10,10,0)_72%)] blur-[70px] sm:blur-[90px]"
         />
@@ -129,6 +119,7 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
               x: shouldReduceMotion ? 0 : (isDesktop ? titleLeftX : 0),
               y: shouldReduceMotion ? 0 : (isDesktop ? 0 : titleMobileTopY),
               opacity: heroOpacity,
+              willChange: "transform, opacity",
             }}
             className="text-center md:text-left max-w-xs sm:max-w-sm md:max-w-sm lg:max-w-md pointer-events-auto"
           >
@@ -163,6 +154,7 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
               x: shouldReduceMotion ? 0 : (isDesktop ? titleRightX : 0),
               y: shouldReduceMotion ? 0 : (isDesktop ? 0 : titleMobileBottomY),
               opacity: heroOpacity,
+              willChange: "transform, opacity",
             }}
             className="text-center md:text-right max-w-xs sm:max-w-sm md:max-w-sm lg:max-w-md pointer-events-auto"
           >
@@ -197,10 +189,11 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
             y: shouldReduceMotion ? 0 : caduceusY,
             x: shouldReduceMotion ? 0 : caduceusX,
             rotateZ: shouldReduceMotion ? 0 : caduceusRotateZ,
+            willChange: "transform",
           }}
           className="relative z-10 flex items-center justify-center pointer-events-none select-none"
         >
-          <div className="relative">
+          <div className="relative" style={{ transform: "translateZ(0)" }}>
             <img
               src={caduceusChrome}
               alt="Simbol Caduceus Medis Krom"
@@ -221,6 +214,7 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
             rotateX: shouldReduceMotion ? 0 : manifestoRotateX,
             y: shouldReduceMotion ? 0 : manifestoY,
             scale: shouldReduceMotion ? 1 : manifestoScale,
+            willChange: "transform, opacity",
           }}
           className="preserve-3d absolute left-3 sm:left-6 md:left-8 lg:left-16 xl:left-24 top-1/2 -translate-y-1/2 z-30 w-[56%] sm:w-[52%] md:w-[46%] md:max-w-[340px] lg:w-full lg:max-w-lg xl:max-w-xl text-left pointer-events-none"
         >
@@ -248,6 +242,7 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
           style={{
             opacity: metricsOpacity,
             y: shouldReduceMotion ? 0 : metricsY,
+            willChange: "transform, opacity",
           }}
           className="absolute left-3 sm:left-6 md:left-8 lg:left-16 xl:left-24 top-1/2 -translate-y-1/2 z-30 w-[56%] sm:w-[52%] md:w-[46%] md:max-w-[340px] lg:w-full lg:max-w-lg xl:max-w-xl text-left pointer-events-none"
         >
@@ -302,10 +297,11 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
             opacity: photoOpacity,
             y: shouldReduceMotion ? 0 : photoY,
             scale: shouldReduceMotion ? 1 : photoScale,
+            willChange: "transform, opacity",
           }}
           className="absolute right-2 sm:right-6 md:right-8 lg:right-16 xl:right-24 top-1/2 -translate-y-1/2 z-25 flex items-center justify-end w-[40%] sm:w-[44%] md:w-[42%] md:max-w-[290px] lg:w-full lg:max-w-[420px] xl:max-w-[450px] pointer-events-none select-none"
         >
-          <div className="relative w-full flex justify-end">
+          <div className="relative w-full flex justify-end" style={{ transform: "translateZ(0)" }}>
             {/* Ambient specular highlight glow behind Arya */}
             <div className="absolute -inset-4 sm:-inset-6 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.07)_0%,rgba(10,10,10,0)_70%)] blur-xl sm:blur-2xl" />
 
@@ -317,6 +313,7 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
               style={{
                 maskImage: 'linear-gradient(to bottom, black 68%, transparent 100%)',
                 WebkitMaskImage: 'linear-gradient(to bottom, black 68%, transparent 100%)',
+                transform: 'translateZ(0)',
               }}
               loading="eager"
             />

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Home from './Pages/Home'
 import Materi from './Pages/Materi'
 import PageSkeleton from './components/PageSkeleton'
 import SmoothScroll from './components/SmoothScroll'
+import { resetScroll } from './utils/scrollHelper'
 import './index.css'
 
 function App() {
@@ -40,7 +41,7 @@ function App() {
       
       setIsTransitioning(true)
       setTargetPage(newPage)
-      window.scrollTo({ top: 0, behavior: 'smooth' })
+      resetScroll(true)
 
       setTimeout(() => {
         setCurrentPage(newPage)
@@ -54,13 +55,13 @@ function App() {
 
   const handleNavigate = (page) => {
     if (page === currentPage && !isTransitioning) {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
+      resetScroll(false)
       return
     }
 
     setIsTransitioning(true)
     setTargetPage(page)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    resetScroll(true)
 
     const targetUrl = page === 'Materi' ? '/Materi' : '/'
     if (window.location.pathname !== targetUrl) {
@@ -101,5 +102,3 @@ function App() {
 }
 
 export default App
-
-

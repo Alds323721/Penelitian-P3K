@@ -6,6 +6,15 @@
     scroll-behavior: auto;
     background-color: #131313;
     color: #EDEDED;
+    touch-action: pan-y;
+    overscroll-behavior-y: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: #131313;
+    touch-action: pan-y;
+    overflow-x: hidden;
   }
 }
 
@@ -14,18 +23,27 @@
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+  0% { transform: translate3d(0%, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 
 .animate-marquee {
   display: flex;
   width: max-content;
   animation: marquee 30s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* Mencegah animasi marquee macet saat disentuh di layar sentuh */
+@media (hover: none) and (pointer: coarse) {
+  .animate-marquee:hover {
+    animation-play-state: running;
+  }
 }
 
 @keyframes shimmer {
@@ -62,11 +80,12 @@
 }
 
 /* ==========================================================================
-   Obsidian Precision: Utilitas 3D Scrollytelling
+   Obsidian Precision: Utilitas 3D Scrollytelling & Mobile Scroll Stabilization
    ========================================================================== */
 .perspective-container {
   perspective: 1200px;
   -webkit-perspective: 1200px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .preserve-3d {
@@ -77,4 +96,19 @@
 .backface-hidden {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-}
+}
+
+/* Accessibility: Hormati prefers-reduced-motion untuk mencegah mabuk gerak */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+
+  .skeleton-shimmer {
+    animation: none;
+  }
+
+  .page-enter {
+    animation: none;
+  }
+}

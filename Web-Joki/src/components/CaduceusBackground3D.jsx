@@ -33,7 +33,7 @@ export default function CaduceusBackground3D({ smoothX, smoothY, opacity = 0.35 
 
       {/* 2. Ambient Specular Radial Glow behind Caduceus */}
       <motion.div
-        className="absolute rounded-full blur-3xl pointer-events-none"
+        className="absolute rounded-full blur-2xl sm:blur-3xl pointer-events-none"
         animate={{
           opacity: [0.35, 0.7, 0.35],
           scale: [0.92, 1.12, 0.92],
@@ -46,6 +46,8 @@ export default function CaduceusBackground3D({ smoothX, smoothY, opacity = 0.35 
         style={{
           width: '80%',
           height: '80%',
+          transform: 'translateZ(0)',
+          willChange: 'transform, opacity',
           background:
             'radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(186, 215, 255, 0.14) 40%, rgba(19, 19, 19, 0) 75%)',
         }}
