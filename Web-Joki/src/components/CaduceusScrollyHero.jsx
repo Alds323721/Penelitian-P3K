@@ -66,7 +66,7 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
     heroTag: "REPOSITORI RISET & PROTOKOL GAWAT DARURAT",
     heroTitleLeft: "TANGGAP\nDARURAT",
     heroTitleRight: "PRESISI\nP3K",
-    heroSubtitle: "Arya Pratama • Standarisasi K3 & Triase",
+    heroSubtitle: "Made Candra Susanta, S.Kep • Alumni Pradana Putra SMAN 4 Singaraja",
     manifestoTag: "[ PROTOCOL PHILOSOPHY // 01 ]",
     manifesto:
       "Protokol medis gawat darurat yang dibangun atas landasan evidence-based medicine. Mentranslasikan kekacauan insiden lapangan menjadi algoritma triase yang terukur, deterministik, dan dapat diaudit secara klinis.",
@@ -302,13 +302,13 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
           className="absolute right-2 sm:right-6 md:right-8 lg:right-16 xl:right-24 top-1/2 -translate-y-1/2 z-25 flex items-center justify-end w-[40%] sm:w-[44%] md:w-[42%] md:max-w-[290px] lg:w-full lg:max-w-[420px] xl:max-w-[450px] pointer-events-none select-none"
         >
           <div className="relative w-full flex justify-end" style={{ transform: "translateZ(0)" }}>
-            {/* Ambient specular highlight glow behind Arya */}
+            {/* Ambient specular highlight glow behind author */}
             <div className="absolute -inset-4 sm:-inset-6 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.07)_0%,rgba(10,10,10,0)_70%)] blur-xl sm:blur-2xl" />
 
             {/* Standalone Grayscale Portrait */}
             <img
               src={aryaHeroImg}
-              alt="Arya Pratama - Peneliti & Praktisi Tanggap Darurat P3K"
+              alt="Made Candra Susanta, S.Kep - Sarjana Keperawatan & Edukasi P3K"
               className="relative z-10 w-full h-auto max-h-[280px] sm:max-h-[380px] md:max-h-[440px] lg:max-h-[540px] xl:max-h-[580px] object-cover object-top filter grayscale contrast-115 brightness-95"
               style={{
                 maskImage: 'linear-gradient(to bottom, black 68%, transparent 100%)',
@@ -322,7 +322,7 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
             <div className="absolute bottom-2 sm:bottom-4 md:bottom-5 lg:bottom-6 left-1 sm:left-2 md:left-3 lg:left-4 z-20 px-2 sm:px-2.5 lg:px-3 py-1 sm:py-1.5 rounded-md sm:rounded-lg border border-[#262626] bg-[#0E0E0E]/90 backdrop-blur-md flex items-center gap-1.5 sm:gap-2 shadow-lg">
               <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
               <span className="font-mono text-[8px] sm:text-[9px] md:text-[10px] text-[#EDEDED] uppercase tracking-wider whitespace-nowrap">
-                Arya Pratama • Peneliti P3K
+                Made Candra S., S.Kep • Edukasi P3K
               </span>
             </div>
           </div>

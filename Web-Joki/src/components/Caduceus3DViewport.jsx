@@ -173,7 +173,7 @@ export default function Caduceus3DViewport({ t, lang = 'id' }) {
                 ? 'bg-[#2a2a2a] text-white shadow-sm border border-[#3a3939]'
                 : 'text-[#8A8A8A] hover:text-[#EDEDED]'
             }`}
-            title="Foto Peneliti Arya Pratama"
+            title="Foto Made Candra Susanta"
           >
             {t?.hero?.viewportPhoto || 'Foto Model'}
           </button>
@@ -283,7 +283,7 @@ export default function Caduceus3DViewport({ t, lang = 'id' }) {
         >
           <img
             src={aryaHeroImg}
-            alt="Arya Pratama - Foto Model Peneliti P3K"
+            alt="Made Candra Susanta - Sarjana Keperawatan STIKES Buleleng"
             className="w-full h-full object-cover object-top filter grayscale contrast-110 brightness-95"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/30 pointer-events-none" />

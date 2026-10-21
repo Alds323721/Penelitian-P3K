@@ -47,10 +47,10 @@ export default function Navbar({
             {navT.profile}
           </span>
           <span className="text-xs font-semibold tracking-wider text-white hidden sm:inline md:hidden">
-            ARYA PRATAMA
+            MADE CANDRA S.
           </span>
           <span className="text-[11px] xs:text-xs font-semibold tracking-wider text-white sm:hidden">
-            ARYA P.
+            M. CANDRA S.
           </span>
         </div>
 

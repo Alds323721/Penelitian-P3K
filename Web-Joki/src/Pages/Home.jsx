@@ -135,16 +135,33 @@ export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
                 <div className="flex items-center gap-3.5 mb-4">
                   <img
                     src={aryaHeroImg}
-                    alt="Arya Pratama"
+                    alt="Made Candra Susanta"
                     className="w-12 h-12 rounded-xl object-cover object-top border border-[#262626] filter grayscale contrast-110 shrink-0"
                   />
                   <div>
                     <h3 className="text-lg font-bold text-white">
                       {t.bento.card1.title}
                     </h3>
-                    <p className="text-xs text-[#8A8A8A]">Arya Pratama • Peneliti P3K & K3</p>
+                    <p className="text-xs text-[#8A8A8A]">
+                      {t.bento.card1.authorRole || 'Made Candra Susanta, S.Kep'}
+                    </p>
                   </div>
                 </div>
+
+                {/* Sub-Header: Organisasi & Pendidikan */}
+                {(t.bento.card1.organization || t.bento.card1.education) && (
+                  <div className="mb-4 px-3.5 py-2.5 rounded-xl bg-[#0e0e0e] border border-[#262626] flex flex-col gap-1">
+                    <div className="flex items-center gap-2 text-xs font-semibold text-[#10B981]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse shrink-0" />
+                      <span>{t.bento.card1.organization}</span>
+                    </div>
+                    <div className="text-[11px] text-[#A3A3A3] font-mono flex flex-wrap items-center gap-x-2">
+                      <span>{t.bento.card1.period}</span>
+                      <span>•</span>
+                      <span className="text-white font-medium">{t.bento.card1.education}</span>
+                    </div>
+                  </div>
+                )}
 
                 <p className="text-sm text-[#8A8A8A] leading-relaxed mb-6">
                   {t.bento.card1.body}
@@ -300,7 +317,7 @@ export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
               <div className="flex items-center gap-3 relative z-10 pt-4 border-t border-[#262626]">
                 <img
                   src={aryaHeroImg}
-                  alt="Arya Pratama"
+                  alt="Made Candra Susanta"
                   className="w-10 h-10 rounded-full object-cover object-top border border-[#333333] filter grayscale contrast-110"
                 />
                 <div>
@@ -553,7 +570,7 @@ export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
             </div>
 
             <a
-              href="mailto:contact@aryapratama.id"
+              href="mailto:candra.susanta@gmail.com"
               className="bg-white hover:bg-[#E5E5E5] text-[#0A0A0A] font-semibold text-sm px-6 py-3.5 rounded-lg flex items-center justify-center gap-2 transition-all shadow-md shrink-0 whitespace-nowrap group"
             >
               <span>{t.cta.btn}</span>
@@ -583,7 +600,7 @@ export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
             <a href="#linkedin" className="hover:text-white transition-colors">
               {t.footer.links.linkedin}
             </a>
-            <a href="mailto:contact@aryapratama.id" className="hover:text-white transition-colors">
+            <a href="mailto:candra.susanta@gmail.com" className="hover:text-white transition-colors">
               {t.footer.links.email}
             </a>
             <a href="#researchgate" className="hover:text-white transition-colors">

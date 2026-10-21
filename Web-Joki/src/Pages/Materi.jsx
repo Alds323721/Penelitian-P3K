@@ -740,7 +740,7 @@ export default function Materi({ onNavigate, lang = 'id', onLanguageChange }) {
             </div>
 
             <a
-              href="mailto:riset@aryapratama.id"
+              href="mailto:candra.susanta@gmail.com"
               className="bg-white hover:bg-[#E5E5E5] text-[#0A0A0A] font-semibold text-sm px-6 py-3.5 rounded-lg flex items-center justify-center gap-2 transition-all shadow-md shrink-0 whitespace-nowrap group"
             >
               <span>{t.cta.btn}</span>
