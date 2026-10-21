@@ -143,7 +143,7 @@ export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
                       {t.bento.card1.title}
                     </h3>
                     <p className="text-xs text-[#8A8A8A]">
-                      {t.bento.card1.authorRole || 'Made Candra Susanta, S.Kep'}
+                      {t.bento.card1.authorRole || 'Made Candra Susanta'}
                     </p>
                   </div>
                 </div>
@@ -220,22 +220,25 @@ export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
                   {t.bento.card2.title}
                 </h3>
 
-                {/* Competency Bars */}
-                <div className="space-y-4 mb-6">
+                {/* Modul & Lingkup Materi */}
+                <div className="space-y-2.5 mb-6">
                   {t.bento.card2.skills.map((skill, idx) => (
-                    <div key={idx}>
-                      <div className="flex justify-between text-xs font-medium mb-1.5">
-                        <span className="text-[#EDEDED]">{skill.name}</span>
-                        <span className="text-[#8A8A8A] tabular-nums font-semibold">
-                          {skill.value}
+                    <div
+                      key={idx}
+                      className="bg-[#1c1b1b] border border-[#262626] rounded-xl p-3 flex items-center justify-between gap-3 transition-colors hover:border-[#383838]"
+                    >
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <span className="w-6 h-6 rounded-md bg-[#252525] text-white text-[11px] font-mono font-bold flex items-center justify-center shrink-0">
+                          {idx + 1 < 10 ? `0${idx + 1}` : idx + 1}
                         </span>
+                        <div className="min-w-0">
+                          <p className="text-xs font-semibold text-white leading-tight truncate">{skill.name}</p>
+                          <p className="text-[10.5px] text-[#8A8A8A] mt-0.5">{skill.category || 'Materi Inti'}</p>
+                        </div>
                       </div>
-                      <div className="h-2 w-full bg-[#201f1f] rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-white rounded-full transition-all duration-500"
-                          style={{ width: skill.value }}
-                        ></div>
-                      </div>
+                      <span className="text-[10px] font-medium text-[#10B981] bg-[#10B981]/10 border border-[#10B981]/25 px-2 py-0.5 rounded-full shrink-0">
+                        {skill.status || 'Lengkap'}
+                      </span>
                     </div>
                   ))}
                 </div>

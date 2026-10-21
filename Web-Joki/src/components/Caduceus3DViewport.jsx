@@ -283,7 +283,7 @@ export default function Caduceus3DViewport({ t, lang = 'id' }) {
         >
           <img
             src={aryaHeroImg}
-            alt="Made Candra Susanta - Sarjana Keperawatan STIKES Buleleng"
+            alt="Made Candra Susanta - Mahasiswa S1 Keperawatan STIKES Buleleng"
             className="w-full h-full object-cover object-top filter grayscale contrast-110 brightness-95"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/30 pointer-events-none" />

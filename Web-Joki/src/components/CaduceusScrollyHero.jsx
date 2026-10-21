@@ -64,20 +64,20 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
   // Teks lokalisasi
   const t = translations?.[lang]?.scrollyHero || translations?.[lang] || {
     heroTag: "REPOSITORI RISET & PROTOKOL GAWAT DARURAT",
-    heroTitleLeft: "TANGGAP\nDARURAT",
-    heroTitleRight: "PRESISI\nP3K",
-    heroSubtitle: "Made Candra Susanta, S.Kep • Alumni Pradana Putra SMAN 4 Singaraja",
-    manifestoTag: "[ PROTOCOL PHILOSOPHY // 01 ]",
+    heroTitleLeft: "PENELITIAN\nSCOUT SIGAP",
+    heroTitleRight: "P3K",
+    heroSubtitle: "Made Candra Susanta • Mahasiswa S1 Keperawatan STIKES Buleleng",
+    manifestoTag: "FILOSOFI & LATAR BELAKANG",
     manifesto:
-      "Protokol medis gawat darurat yang dibangun atas landasan evidence-based medicine. Mentranslasikan kekacauan insiden lapangan menjadi algoritma triase yang terukur, deterministik, dan dapat diaudit secara klinis.",
-    latencyLabel: "LATENCY: 0.0s",
-    standardLabel: "STANDARD: PERMENAKER NO. 15",
-    m1Value: "6+ THN",
-    m1Label: "Pengalaman Lapangan",
-    m2Value: "99.4%",
-    m2Label: "Akurasi Protokol START",
-    m3Value: "2.500+",
-    m3Label: "Praktisi Terlatih",
+      "Protokol pertolongan pertama yang memadukan keilmuan keperawatan dan pengalaman kepramukaan lapangan. Mentranslasikan kesadaran tanggap darurat menjadi media edukasi yang aplikatif, mudah dipahami, dan meningkatkan kesiapsiagaan anggota ambalan serta masyarakat umum.",
+    latencyLabel: "",
+    standardLabel: "STANDAR: PROTOKOL P3K MEDIS & KEPRAMUKAAN",
+    m1Value: "S1",
+    m1Label: "Mahasiswa Keperawatan",
+    m2Value: "2022–2023",
+    m2Label: "Pradana Ken Arok Ken Dedes",
+    m3Value: "STIKES",
+    m3Label: "Buleleng",
     scrollHint: "GULIR UNTUK MEMBEDAH PROTOKOL",
   };
 
@@ -113,7 +113,7 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
         {/* Tablet & Desktop: Teks Kiri & Kanan di samping Logo */}
         {/* ========================================================= */}
         <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-20 pointer-events-none w-full max-w-[1440px] mx-auto px-4 sm:px-8 md:px-10 lg:px-16 xl:px-24 h-[296px] sm:h-[350px] md:h-auto flex flex-col md:flex-row justify-between items-center">
-          {/* Sisi Atas Mobile / Kiri Desktop (TANGGAP DARURAT - Di Atas Logo) */}
+          {/* Sisi Atas Mobile / Kiri Desktop (PENELITIAN SCOUT SIGAP - Di Atas/Kiri Logo) */}
           <motion.div
             style={{
               x: shouldReduceMotion ? 0 : (isDesktop ? titleLeftX : 0),
@@ -121,7 +121,7 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
               opacity: heroOpacity,
               willChange: "transform, opacity",
             }}
-            className="text-center md:text-left max-w-xs sm:max-w-sm md:max-w-sm lg:max-w-md pointer-events-auto"
+            className="text-center md:text-left max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl pointer-events-auto"
           >
             <div className="flex items-center justify-center md:justify-start gap-1.5 sm:gap-2 mb-1 sm:mb-2 md:mb-3">
               <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-[#10B981] animate-pulse" />
@@ -129,9 +129,9 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
                 {t.heroTag}
               </span>
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-black tracking-[-0.03em] text-[#FFFFFF] uppercase leading-[0.9] font-sans">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black tracking-[-0.03em] text-[#FFFFFF] uppercase leading-[0.95] font-sans">
               {t.heroTitleLeft.split("\n").map((line, idx) => (
-                <span key={idx} className="block">{line}</span>
+                <span key={idx} className="block whitespace-nowrap">{line}</span>
               ))}
             </h1>
             <div className="mt-4 sm:mt-6 hidden md:flex items-center gap-3">
@@ -148,7 +148,7 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
             </div>
           </motion.div>
 
-          {/* Sisi Bawah Mobile / Kanan Desktop (PRESISI P3K - Di Bawah Logo) */}
+          {/* Sisi Bawah Mobile / Kanan Desktop (P3K - Di Bawah/Kanan Logo) */}
           <motion.div
             style={{
               x: shouldReduceMotion ? 0 : (isDesktop ? titleRightX : 0),
@@ -160,7 +160,7 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
           >
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-black tracking-[-0.03em] text-[#FFFFFF] uppercase leading-[0.9] font-sans">
               {t.heroTitleRight.split("\n").map((line, idx) => (
-                <span key={idx} className="block">{line}</span>
+                <span key={idx} className="block whitespace-nowrap">{line}</span>
               ))}
             </h1>
             <p className="mt-1.5 sm:mt-3 md:mt-4 font-mono text-[10px] sm:text-[11px] md:text-xs text-[#8A8A8A] uppercase tracking-wider">
@@ -228,8 +228,6 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
               "{t.manifesto}"
             </p>
             <div className="mt-2.5 sm:mt-4 lg:mt-5 flex flex-wrap items-center gap-1.5 sm:gap-2.5 lg:gap-3 text-[8px] sm:text-[10px] md:text-xs font-mono text-[#8A8A8A]">
-              <span>{t.latencyLabel}</span>
-              <span>•</span>
               <span>{t.standardLabel}</span>
             </div>
           </div>
@@ -248,9 +246,9 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
         >
           <div className="rounded-xl sm:rounded-2xl border border-[#262626] bg-[#0E0E0E]/92 backdrop-blur-xl p-3.5 sm:p-5 md:p-6 lg:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.85)] pointer-events-auto">
             <div className="flex items-center gap-1.5 sm:gap-2 mb-3 sm:mb-5 lg:mb-6">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#10B981] animate-pulse" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[#10B981]" />
               <span className="font-mono text-[8px] sm:text-[10px] md:text-xs uppercase tracking-widest text-[#8A8A8A]">
-                METRIK AUDIT KLINIS
+                DATA PENELITI & RIWAYAT
               </span>
             </div>
 
@@ -308,7 +306,7 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
             {/* Standalone Grayscale Portrait */}
             <img
               src={aryaHeroImg}
-              alt="Made Candra Susanta, S.Kep - Sarjana Keperawatan & Edukasi P3K"
+              alt="Made Candra Susanta - Mahasiswa S1 Keperawatan & Riset Edukasi P3K"
               className="relative z-10 w-full h-auto max-h-[280px] sm:max-h-[380px] md:max-h-[440px] lg:max-h-[540px] xl:max-h-[580px] object-cover object-top filter grayscale contrast-115 brightness-95"
               style={{
                 maskImage: 'linear-gradient(to bottom, black 68%, transparent 100%)',
@@ -322,7 +320,7 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
             <div className="absolute bottom-2 sm:bottom-4 md:bottom-5 lg:bottom-6 left-1 sm:left-2 md:left-3 lg:left-4 z-20 px-2 sm:px-2.5 lg:px-3 py-1 sm:py-1.5 rounded-md sm:rounded-lg border border-[#262626] bg-[#0E0E0E]/90 backdrop-blur-md flex items-center gap-1.5 sm:gap-2 shadow-lg">
               <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
               <span className="font-mono text-[8px] sm:text-[9px] md:text-[10px] text-[#EDEDED] uppercase tracking-wider whitespace-nowrap">
-                Made Candra S., S.Kep • Edukasi P3K
+                Made Candra Susanta • Riset Edukasi P3K
               </span>
             </div>
           </div>

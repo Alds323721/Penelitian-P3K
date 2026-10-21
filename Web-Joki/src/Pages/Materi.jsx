@@ -149,14 +149,14 @@ export default function Materi({ onNavigate, lang = 'id', onLanguageChange }) {
               </div>
             </div>
 
-            {/* Right Hero Card: Triage & ECG Medical Monitor (5 Cols Desktop) */}
+            {/* Right Hero Card: Ikhtisar Modul Penelitian P3K (5 Cols Desktop) */}
             <div className="lg:col-span-5">
-              <div className="bg-[#141414] border border-[#262626] rounded-2xl p-4 sm:p-5 shadow-2xl relative">
+              <div className="bg-[#141414] border border-[#262626] rounded-2xl p-5 sm:p-6 shadow-2xl relative">
                 {/* Header of Card */}
-                <div className="flex items-center justify-between mb-3.5">
+                <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-lg bg-[#1c1b1b] border border-[#262626] flex items-center justify-center text-white">
-                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <div className="w-8 h-8 rounded-lg bg-[#1c1b1b] border border-[#262626] flex items-center justify-center text-[#10B981]">
+                      <svg className="w-4 h-4 text-[#10B981]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
@@ -171,59 +171,33 @@ export default function Materi({ onNavigate, lang = 'id', onLanguageChange }) {
                   </div>
 
                   <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#10B981] bg-[#10B981]/10 px-2.5 py-1 rounded-full border border-[#10B981]/20">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse"></span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
                     {t.hero.ecgCard.activeBadge}
                   </span>
                 </div>
 
-                {/* Oscilloscope ECG Display Screen */}
-                <div className="bg-[#0b130e] border border-[#15321f] rounded-xl p-3.5 sm:p-4 font-mono relative overflow-hidden shadow-inner">
-                  {/* Subtle Grid Background */}
-                  <div
-                    className="absolute inset-0 opacity-15 pointer-events-none"
-                    style={{
-                      backgroundImage:
-                        'linear-gradient(to right, #10B981 1px, transparent 1px), linear-gradient(to bottom, #10B981 1px, transparent 1px)',
-                      backgroundSize: '16px 16px',
-                    }}
-                  />
-
-                  {/* Top Screen Data */}
-                  <div className="flex items-center justify-between text-[11px] font-bold mb-3 relative z-10">
-                    <span className="text-[#34d399]/80 tracking-wider">{t.hero.ecgCard.monitorTitle}</span>
-                    <span className="text-[#10B981] tabular-nums">{t.hero.ecgCard.bloodPressure}</span>
-                  </div>
-
-                  {/* ECG Waveform SVG */}
-                  <div className="h-16 w-full flex items-center relative z-10 my-1">
-                    <svg
-                      className="w-full h-full text-[#10B981]"
-                      viewBox="0 0 400 60"
-                      fill="none"
-                      preserveAspectRatio="none"
-                    >
-                      <path
-                        d="M0 30 H70 L80 30 L88 24 L94 36 L100 30 L108 30 L114 8 L122 52 L128 18 L134 34 L142 30 H220 L228 30 L236 24 L242 36 L248 30 L256 30 L262 8 L270 52 L276 18 L282 34 L290 30 H400"
-                        stroke="currentColor"
-                        strokeWidth="2.2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
-
-                  {/* Bottom Screen Data */}
-                  <div className="flex items-center justify-between text-[10px] text-[#34d399]/70 relative z-10 pt-2 border-t border-[#15321f]/60">
-                    <div className="flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
-                      <span>{t.hero.ecgCard.algorithm}</span>
+                {/* Modules Summary Box */}
+                <div className="bg-[#0e0e0e] border border-[#262626] rounded-xl p-3 sm:p-3.5 space-y-2.5 mb-4">
+                  {(t.hero.ecgCard.modules || [
+                    { no: '01', title: 'Triase & Alur Tanggap Darurat', desc: 'Klasifikasi cepat & prioritas evakuasi lapangan' },
+                    { no: '02', title: 'Standardisasi Kotak P3K', desc: 'Manajemen obat & instrumen darurat luar ruangan' },
+                    { no: '03', title: 'Resusitasi Jantung Paru (RJP)', desc: 'Kompresi dada & golden period Bantuan Hidup Dasar' },
+                    { no: '04', title: 'Manajemen Fraktur & Trauma', desc: 'Teknik pembidaian & imobilisasi cedera' },
+                  ]).map((mod, idx) => (
+                    <div key={idx} className="flex items-start gap-2.5 bg-[#161616] border border-[#222222] rounded-lg p-2.5">
+                      <span className="text-[11px] font-mono font-bold text-[#10B981] bg-[#10B981]/10 border border-[#10B981]/25 px-1.5 py-0.5 rounded shrink-0">
+                        {mod.no}
+                      </span>
+                      <div className="min-w-0">
+                        <div className="text-xs font-semibold text-white leading-tight">{mod.title}</div>
+                        <div className="text-[11px] text-[#8A8A8A] leading-tight mt-0.5">{mod.desc}</div>
+                      </div>
                     </div>
-                    <span className="text-[#10B981]">{t.hero.ecgCard.latency}</span>
-                  </div>
+                  ))}
                 </div>
 
-                {/* Below Monitor Meta Info */}
-                <div className="mt-4 grid grid-cols-2 gap-3 bg-[#1c1b1b] border border-[#262626] rounded-xl p-3.5">
+                {/* Below Modules Meta Info */}
+                <div className="grid grid-cols-2 gap-3 bg-[#1c1b1b] border border-[#262626] rounded-xl p-3.5">
                   <div>
                     <div className="text-[10px] text-[#8A8A8A] uppercase font-medium">{t.hero.ecgCard.accessStatusLabel}</div>
                     <div className="text-xs sm:text-[13px] font-bold text-white mt-0.5">{t.hero.ecgCard.accessStatusValue}</div>
@@ -236,10 +210,10 @@ export default function Materi({ onNavigate, lang = 'id', onLanguageChange }) {
                   </div>
                 </div>
 
-                {/* Card Footer Hash */}
-                <div className="flex items-center justify-between text-[10px] text-[#8A8A8A] font-mono mt-3 px-1">
+                {/* Card Footer Clean Attribution */}
+                <div className="flex items-center justify-between text-[11px] text-[#8A8A8A] mt-3.5 px-1">
                   <span>{t.hero.ecgCard.officialRepo}</span>
-                  <span>SHA-256: 9b2d80...</span>
+                  <span className="text-[#10B981] font-medium">STIKES Buleleng</span>
                 </div>
               </div>
             </div>
