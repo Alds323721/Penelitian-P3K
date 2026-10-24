@@ -107,6 +107,7 @@ export default function Materi({ onNavigate, lang = 'id', onLanguageChange }) {
 
                 <button
                   type="button"
+                  onClick={() => navigateTo('Home')}
                   className="bg-[#141414] hover:bg-[#1E1E1E] text-[#EDEDED] border border-[#262626] hover:border-[#383838] font-medium text-sm px-5 py-3 rounded-lg flex items-center justify-center gap-2.5 transition-all cursor-pointer"
                 >
                   <svg
@@ -239,7 +240,7 @@ export default function Materi({ onNavigate, lang = 'id', onLanguageChange }) {
         </section>
 
         {/* ========================================================= */}
-        {/* 4. PROYEK RISET & MATERI UTAMA YANG DITELITI (BENTO) */}
+        {/* 4. KONSEP PERTOLONGAN PERTAMA PADA KECELAKAAN (P3K) */}
         {/* ========================================================= */}
         <section id="proyek-utama" className="max-w-[1200px] mx-auto px-4 sm:px-6 py-20">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
@@ -256,215 +257,181 @@ export default function Materi({ onNavigate, lang = 'id', onLanguageChange }) {
             </p>
           </div>
 
-          {/* Bento Grid: 7 Cols Left (Featured) & 5 Cols Right (Stacked) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
-            {/* Card 1: Proyek Riset Unggulan #01 (START Protocol) - 7 Cols */}
-            <div className="lg:col-span-7 bg-[#141414] border border-[#262626] rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:border-[#333333] transition-colors">
+          {/* 2 Comprehensive Theoretical Cards Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+            {/* Card 1: 1. Pengertian Pertolongan Pertama Pada Kecelakaan */}
+            <div className="bg-[#141414] border border-[#262626] rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-[#383838] transition-all duration-300 shadow-xl relative overflow-hidden group">
+              {/* Subtle Ambient Glow */}
+              <div className="absolute -top-24 -left-24 w-48 h-48 bg-[#10B981]/5 rounded-full blur-3xl pointer-events-none group-hover:bg-[#10B981]/10 transition-colors"></div>
+
               <div>
                 {/* Meta Header */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-[11px] font-mono font-semibold tracking-wider text-white bg-[#1c1b1b] border border-[#262626] px-2.5 py-1 rounded">
+                <div className="flex items-center justify-between gap-3 mb-5">
+                  <span className="text-[11px] font-mono font-semibold tracking-wider text-[#10B981] bg-[#10B981]/10 border border-[#10B981]/25 px-2.5 py-1 rounded">
                     {t.bento.card1.tag}
                   </span>
-                  <span className="text-xs font-mono text-[#8A8A8A]">{t.bento.card1.est}</span>
+                  <span className="text-xs font-mono text-[#8A8A8A] flex items-center gap-1.5">
+                    <svg className="w-3.5 h-3.5 text-[#10B981]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                    </svg>
+                    <span>{t.bento.card1.source}</span>
+                  </span>
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 leading-snug">
+                {/* Card Title */}
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 leading-snug tracking-[-0.01em]">
                   {t.bento.card1.title}
                 </h3>
 
-                <p className="text-xs sm:text-sm text-[#8A8A8A] leading-relaxed mb-6">
-                  {t.bento.card1.desc}
-                </p>
-
-                {/* 4 Triage Tag Blocks (2x2) */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-                  {t.bento.card1.tags.map((tagItem, idx) => (
-                    <div key={idx} className="bg-[#1c1b1b] border border-[#262626] rounded-xl p-3">
-                      <div className="flex items-center gap-2 text-xs font-bold mb-1" style={{ color: tagItem.color }}>
-                        <span className="w-2 h-2 rounded-full" style={{ backgroundColor: tagItem.color }}></span>
-                        {tagItem.name}
-                      </div>
-                      <p className="text-[11px] text-[#8A8A8A] leading-relaxed">
-                        {tagItem.desc}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Action & File Meta */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-4 border-t border-[#262626]">
-                <div className="flex items-center gap-2 text-xs text-[#8A8A8A]">
-                  <svg className="w-4 h-4 text-[#8A8A8A]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-                  </svg>
-                  <span>{t.bento.card1.fileMeta}</span>
-                </div>
-
-                <a
-                  href="#unduh-dokumen"
-                  className="bg-white hover:bg-[#E5E5E5] text-[#0A0A0A] font-semibold text-xs px-4 py-2.5 rounded-lg flex items-center justify-center gap-2 transition-all shadow-md group"
-                >
-                  <span>{t.bento.card1.btn}</span>
-                  <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            {/* Right Stack: Card 2 & Card 3 (5 Cols) */}
-            <div className="lg:col-span-5 flex flex-col gap-5">
-              {/* Card 2: Studi Standardisasi #02 */}
-              <div className="bg-[#141414] border border-[#262626] rounded-2xl p-5 sm:p-6 flex flex-col justify-between hover:border-[#333333] transition-colors">
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-[10px] font-mono font-semibold tracking-wider text-[#8A8A8A] uppercase">
-                      {t.bento.card2.tag}
-                    </span>
-                    <span className="text-[10px] font-mono text-[#8A8A8A]">{t.bento.card2.regulation}</span>
+                {/* Content Block 1: Definisi Pokok P3K */}
+                <div className="bg-[#1c1b1b] border border-[#262626] rounded-xl p-4 sm:p-5 mb-4 relative">
+                  <div className="text-[11px] font-mono uppercase tracking-wider text-[#10B981] font-semibold mb-2 flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
+                    <span>Definisi & Esensi P3K</span>
                   </div>
-
-                  <h3 className="text-base sm:text-lg font-bold text-white mb-2 leading-snug">
-                    {t.bento.card2.title}
-                  </h3>
-
-                  <p className="text-xs text-[#8A8A8A] leading-relaxed mb-4">
-                    {t.bento.card2.desc}
+                  <p className="text-xs sm:text-sm text-[#D4D4D4] leading-relaxed text-justify">
+                    {t.bento.card1.p1}
                   </p>
+                </div>
 
-                  {/* Pills */}
-                  <div className="flex flex-wrap gap-1.5 mb-5">
-                    {t.bento.card2.pills.map((pill, idx) => (
-                      <span key={idx} className="bg-[#1c1b1b] border border-[#262626] text-[#EDEDED] text-[11px] px-2.5 py-1 rounded-md font-medium">
-                        {pill}
+                {/* Content Block 2: Batasan Tindakan Awal & Bukan Pengganti Medis */}
+                <div className="bg-[#181818] border border-[#262626] rounded-xl p-4 sm:p-5 mb-4">
+                  <div className="text-[11px] font-mono uppercase tracking-wider text-[#EDEDED] font-semibold mb-2 flex items-center gap-2">
+                    <svg className="w-3.5 h-3.5 text-[#10B981]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                    </svg>
+                    <span>{t.bento.card1.p2Label}</span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-[#8A8A8A] leading-relaxed mb-3.5 text-justify">
+                    {t.bento.card1.p2}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {t.bento.card1.p2Actions.map((act, idx) => (
+                      <span
+                        key={idx}
+                        className="bg-[#201f1f] border border-[#2c2c2c] text-[#c4c7c8] text-[11px] px-2.5 py-1 rounded-md font-medium"
+                      >
+                        {act}
                       </span>
                     ))}
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between text-xs pt-3 border-t border-[#262626]">
-                  <span className="text-[#8A8A8A]">{t.bento.card2.footerLabel}</span>
-                  <a href="#unduh-checklist" className="text-white hover:underline font-medium flex items-center gap-1.5">
-                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                {/* Content Block 3: Relevansi dalam Kegiatan Pramuka */}
+                <div className="bg-[#161616] border border-[#262626] rounded-xl p-4 sm:p-5 mb-6">
+                  <div className="text-[11px] font-mono uppercase tracking-wider text-[#EDEDED] font-semibold mb-2 flex items-center gap-2">
+                    <svg className="w-3.5 h-3.5 text-[#10B981]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
                     </svg>
-                    <span>{t.bento.card2.downloadBtn}</span>
-                  </a>
+                    <span>{t.bento.card1.p3Label}</span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-[#8A8A8A] leading-relaxed mb-3.5 text-justify">
+                    {t.bento.card1.p3}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {t.bento.card1.p3Badges.map((badge, idx) => (
+                      <span
+                        key={idx}
+                        className="bg-[#1c1b1b] border border-[#262626] text-[#10B981] text-[11px] px-2.5 py-1 rounded-md font-mono"
+                      >
+                        {badge}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
 
-              {/* Card 3: Modul Praktik Kritis #03 */}
-              <div className="bg-[#141414] border border-[#262626] rounded-2xl p-5 sm:p-6 flex flex-col justify-between hover:border-[#333333] transition-colors">
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-[10px] font-mono font-semibold tracking-wider text-[#8A8A8A] uppercase">
-                      {t.bento.card3.tag}
-                    </span>
-                    <span className="text-[10px] font-bold text-[#10B981] font-mono">
-                      {t.bento.card3.regulation}
-                    </span>
-                  </div>
-
-                  <h3 className="text-base sm:text-lg font-bold text-white mb-2 leading-snug">
-                    {t.bento.card3.title}
-                  </h3>
-
-                  <p className="text-xs text-[#8A8A8A] leading-relaxed mb-4">
-                    {t.bento.card3.desc}
-                  </p>
-
-                  {/* Two Metric Stat Boxes */}
-                  <div className="grid grid-cols-2 gap-3 mb-5">
-                    <div className="bg-[#1c1b1b] border border-[#262626] rounded-xl p-3">
-                      <div className="text-xl sm:text-2xl font-bold text-white tracking-tight tabular-nums">
-                        {t.bento.card3.box1.val}
-                      </div>
-                      <div className="text-[11px] text-[#8A8A8A]">{t.bento.card3.box1.sub}</div>
-                    </div>
-                    <div className="bg-[#1c1b1b] border border-[#262626] rounded-xl p-3">
-                      <div className="text-xl sm:text-2xl font-bold text-white tracking-tight tabular-nums">
-                        {t.bento.card3.box2.val}
-                      </div>
-                      <div className="text-[11px] text-[#8A8A8A]">{t.bento.card3.box2.sub}</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between text-xs pt-3 border-t border-[#262626]">
-                  <span className="text-[#8A8A8A]">{t.bento.card3.footerLabel}</span>
-                  <a
-                    href="#panduan-visual"
-                    className="flex items-center gap-1.5 text-white bg-[#1c1b1b] hover:bg-[#252525] border border-[#333333] px-3 py-1.5 rounded-lg font-medium transition-colors"
-                  >
-                    <span>{t.bento.card3.btn}</span>
-                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </a>
-                </div>
+              {/* Action / Footer Meta */}
+              <div className="flex items-center justify-between text-xs pt-4 border-t border-[#262626] text-[#8A8A8A]">
+                <span className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
+                  <span>{t.bento.card1.footerMeta}</span>
+                </span>
+                <span className="font-mono text-[11px] text-[#EDEDED] bg-[#1c1b1b] border border-[#262626] px-2.5 py-0.5 rounded">
+                  {t.bento.card1.footerBadge}
+                </span>
               </div>
             </div>
-          </div>
 
-          {/* Full-Width Card 4: Panduan Penanganan Trauma #04 */}
-          <div className="bg-[#141414] border border-[#262626] rounded-2xl p-6 sm:p-7 hover:border-[#333333] transition-colors">
-            <div className="flex flex-col lg:flex-row items-stretch justify-between gap-6">
-              {/* Left Details */}
-              <div className="flex-1">
-                <div className="flex flex-wrap items-center gap-2 mb-3">
-                  <span className="text-[11px] font-mono font-semibold tracking-wider text-[#8A8A8A] uppercase">
-                    {t.bento.card4.tag}
+            {/* Card 2: 2. Tujuan dan Manfaat P3K */}
+            <div className="bg-[#141414] border border-[#262626] rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-[#383838] transition-all duration-300 shadow-xl relative overflow-hidden group">
+              {/* Subtle Ambient Glow */}
+              <div className="absolute -top-24 -right-24 w-48 h-48 bg-[#10B981]/5 rounded-full blur-3xl pointer-events-none group-hover:bg-[#10B981]/10 transition-colors"></div>
+
+              <div>
+                {/* Meta Header */}
+                <div className="flex items-center justify-between gap-3 mb-5">
+                  <span className="text-[11px] font-mono font-semibold tracking-wider text-[#10B981] bg-[#10B981]/10 border border-[#10B981]/25 px-2.5 py-1 rounded">
+                    {t.bento.card2.tag}
                   </span>
-                  {t.bento.card4.badges.map((b, idx) => (
-                    <span key={idx} className="bg-[#1c1b1b] border border-[#262626] text-[10px] font-mono text-[#c4c7c8] px-2 py-0.5 rounded">
-                      {b}
-                    </span>
-                  ))}
+                  <span className="text-xs font-mono text-[#8A8A8A] flex items-center gap-1.5">
+                    <svg className="w-3.5 h-3.5 text-[#10B981]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                    </svg>
+                    <span>{t.bento.card2.source}</span>
+                  </span>
                 </div>
 
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-2 leading-snug">
-                  {t.bento.card4.title}
+                {/* Card Title */}
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 leading-snug tracking-[-0.01em]">
+                  {t.bento.card2.title}
                 </h3>
 
-                <p className="text-xs sm:text-sm text-[#8A8A8A] leading-relaxed mb-4 max-w-3xl">
-                  {t.bento.card4.desc}
+                {/* Subtitle / Intro */}
+                <p className="text-xs sm:text-sm text-[#8A8A8A] mb-5 leading-relaxed">
+                  {t.bento.card2.intro}
                 </p>
 
-                {/* Checklist */}
-                <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-[#EDEDED]">
-                  {t.bento.card4.checks.map((chk, idx) => (
-                    <div key={idx} className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
-                      <span>{chk}</span>
+                {/* 5 Tujuan List (A - E) */}
+                <div className="space-y-2.5 mb-5">
+                  {t.bento.card2.goals.map((goal, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-[#1c1b1b] border border-[#262626] rounded-xl p-3 sm:p-3.5 flex items-start gap-3 hover:border-[#383838] transition-colors"
+                    >
+                      <div className="w-7 h-7 rounded-lg bg-[#10B981]/15 text-[#10B981] border border-[#10B981]/30 flex items-center justify-center font-mono font-bold text-xs shrink-0 mt-0.5">
+                        {goal.letter}
+                      </div>
+                      <p className="text-xs sm:text-[13px] text-[#EDEDED] font-medium leading-relaxed">
+                        {goal.text}
+                      </p>
                     </div>
                   ))}
                 </div>
-              </div>
 
-              {/* Right Box: Paket Modul Lengkap */}
-              <div className="bg-[#0e0e0e] border border-[#262626] rounded-xl p-4 sm:p-5 flex flex-col justify-between lg:w-72 shrink-0">
-                <div>
-                  <div className="text-[10px] text-[#8A8A8A] font-semibold tracking-wider uppercase mb-1">
-                    {t.bento.card4.package.tag}
+                {/* Manfaat P3K Highlight Box */}
+                <div className="bg-[#181818] border border-[#262626] rounded-xl p-4 sm:p-5 mb-6">
+                  <div className="text-[11px] font-mono uppercase tracking-wider text-[#10B981] font-semibold mb-2 flex items-center gap-2">
+                    <svg className="w-3.5 h-3.5 text-[#10B981]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                    </svg>
+                    <span>{t.bento.card2.benefitsLabel}</span>
                   </div>
-                  <div className="text-base font-bold text-white mb-1.5">{t.bento.card4.package.title}</div>
-                  <div className="text-xs text-[#8A8A8A] leading-relaxed mb-4">
-                    {t.bento.card4.package.desc}
+                  <p className="text-xs sm:text-sm text-[#D4D4D4] leading-relaxed mb-3.5 text-justify">
+                    {t.bento.card2.benefits}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {t.bento.card2.benefitPills.map((pill, idx) => (
+                      <span
+                        key={idx}
+                        className="bg-[#201f1f] border border-[#2c2c2c] text-[#c4c7c8] text-[11px] px-2.5 py-1 rounded-md font-medium"
+                      >
+                        {pill}
+                      </span>
+                    ))}
                   </div>
                 </div>
+              </div>
 
-                <a
-                  href="#unduh-poster"
-                  className="bg-white hover:bg-[#E5E5E5] text-[#0A0A0A] font-semibold text-xs py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-all shadow-md group"
-                >
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                  </svg>
-                  <span>{t.bento.card4.package.btn}</span>
-                </a>
+              {/* Action / Footer Meta */}
+              <div className="flex items-center justify-between text-xs pt-4 border-t border-[#262626] text-[#8A8A8A]">
+                <span className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
+                  <span>{t.bento.card2.footerMeta}</span>
+                </span>
+                <span className="font-mono text-[11px] text-[#10B981] bg-[#10B981]/10 border border-[#10B981]/25 px-2.5 py-0.5 rounded">
+                  {t.bento.card2.footerBadge}
+                </span>
               </div>
             </div>
           </div>
