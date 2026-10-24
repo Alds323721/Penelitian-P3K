@@ -15,13 +15,23 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
   // State for fullscreen lightbox modal (holds active card index 0..5 or null)
   const [lightboxIndex, setLightboxIndex] = useState(null);
 
+  // Standard Triage & Risk Palette:
+  // Rendah (Low)     -> Hijau (Emerald)
+  // Sedang (Moderate) -> Kuning (Yellow)
+  // Tinggi (High)     -> Oranye (Orange)
+  // Kritis (Critical) -> Merah (Red)
   const cardsData = [
     {
       id: 1,
       image: img4433,
       tag: isEn ? 'FIELD CASE 01 • WATER & MUD OBSTACLE' : 'KASUS LAPANGAN 01 • RINTANGAN AIR & LUMPUR',
+      level: 'high',
       severity: isEn ? 'HIGH RISK' : 'RISIKO TINGGI',
-      severityColor: 'text-rose-400 bg-rose-500/10 border-rose-500/30',
+      badgeClass: 'text-orange-400 bg-orange-500/10 border-orange-500/30',
+      dotClass: 'bg-orange-400',
+      accentText: 'text-orange-400',
+      accentBg: 'bg-orange-400',
+      hoverBorder: 'hover:border-orange-500/40',
       title: isEn
         ? 'Crawling in Murky Muddy Waters & Low Wire Obstacles'
         : 'Merayap di Kubangan Lumpur Berair & Rintangan Kawat',
@@ -66,8 +76,13 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
       id: 2,
       image: img4442,
       tag: isEn ? 'FIELD CASE 02 • SLIPPERY CONCRETE CANAL' : 'KASUS LAPANGAN 02 • TANGGUL IRIGASI LICIN',
+      level: 'high',
       severity: isEn ? 'HIGH RISK' : 'RISIKO TINGGI',
-      severityColor: 'text-amber-400 bg-amber-500/10 border-amber-500/30',
+      badgeClass: 'text-orange-400 bg-orange-500/10 border-orange-500/30',
+      dotClass: 'bg-orange-400',
+      accentText: 'text-orange-400',
+      accentBg: 'bg-orange-400',
+      hoverBorder: 'hover:border-orange-500/40',
       title: isEn
         ? 'Barefoot Trekking on Slippery Concrete Canal Dikes'
         : 'Trekking Tanggul Irigasi Beton Berlumut Tanpa Alas Kaki',
@@ -112,8 +127,13 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
       id: 3,
       image: img4449,
       tag: isEn ? 'FIELD CASE 03 • PRONE OBSTACLE & AIRWAY HAZARD' : 'KASUS LAPANGAN 03 • SIMULASI TIARAP & OBSTRUKSI NAPAS',
+      level: 'critical',
       severity: isEn ? 'CRITICAL RISK' : 'RISIKO KRITIS',
-      severityColor: 'text-orange-400 bg-orange-500/10 border-orange-500/30',
+      badgeClass: 'text-red-400 bg-red-500/10 border-red-500/30',
+      dotClass: 'bg-red-500 animate-pulse',
+      accentText: 'text-red-400',
+      accentBg: 'bg-red-500',
+      hoverBorder: 'hover:border-red-500/40',
       title: isEn
         ? 'Prone Maneuvers in Field Grass with Mouth Apparatus'
         : 'Simulasi Tiarap Medan Rumput & Rintangan Rongga Mulut',
@@ -157,9 +177,14 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
     {
       id: 4,
       image: img4443,
-      tag: isEn ? 'FIELD CASE 04 • RICE FIELD DIKE & STONE DITCH' : 'KASUS LAPANGAN 04 • PEMATANG SAWAH & TEBING BATU',
-      severity: isEn ? 'HIGH RISK' : 'RISIKO TINGGI',
-      severityColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
+      tag: isEn ? 'FIELD CASE 04 • RICE FIELD DIKE PATROL' : 'KASUS LAPANGAN 04 • LINTAS ALAM PEMATANG SAWAH',
+      level: 'low',
+      severity: isEn ? 'LOW RISK' : 'RISIKO RENDAH',
+      badgeClass: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
+      dotClass: 'bg-emerald-400',
+      accentText: 'text-emerald-400',
+      accentBg: 'bg-emerald-400',
+      hoverBorder: 'hover:border-emerald-500/40',
       title: isEn
         ? 'Rice Field Dike Trekking Beside Stone-Embankment Ditches'
         : 'Lintas Alam Pematang Sawah & Tebing Parit Bebatuan',
@@ -169,43 +194,48 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
       risks: isEn
         ? [
             {
-              title: 'Slips & Falls into Steep Stone Ditches',
-              detail: 'High fall impact on rough rock embankments causing blunt trauma, contusions, and fractures.',
+              title: 'Slips & Minor Falls on Soft Earth',
+              detail: 'Loss of traction on damp mud ridges causing minor abrasions and balance loss.',
             },
             {
-              title: 'Wildlife Exposure & Snake Bites',
-              detail: 'Tall wetland flora and muddy ditches provide natural habitat for venomous reptiles and insects.',
+              title: 'Grass & Plant Sap Irritation',
+              detail: 'Superficial skin contact with tall wild weeds along narrow bund pathways.',
             },
             {
-              title: 'Knee & Ankle Misalignment Trauma',
-              detail: 'Unstable soft mud ridges causing sudden ankle rolling and hyperextension under march tempo.',
+              title: 'Mild Ankle Inversion / Misstep',
+              detail: 'Uneven ridge contours causing minor foot misplacement under standard patrol cadence.',
             },
           ]
         : [
             {
-              title: 'Tergelincir Jatuh ke Parit Bebatuan',
-              detail: 'Ketinggian tebing batu berisiko menimbulkan trauma tumpul, fraktur tulang, atau dislokasi sendi.',
+              title: 'Tergelincir di Pematang Tanah Lembek',
+              detail: 'Kehilangan pijakan pada tanah basah berisiko lecet ringan atau jatuh terduduk.',
             },
             {
-              title: 'Paparan Satwa Liar / Gigitan Ular Sawah',
-              detail: 'Ekosistem semak pematang berpotensi sarang ular atau hewan berbisa.',
+              title: 'Iritasi Rumput Liar & Getah Tanaman',
+              detail: 'Kontak gesekan kulit dengan ilalang dan tanaman liar di sepanjang pematang sawah.',
             },
             {
-              title: 'Cedera Lutut & Pergelangan Kaki',
-              detail: 'Medan tanah lembek berkontur tidak rata menyebabkan salah tumpuan langkah saat berbaris.',
+              title: 'Salah Pijakan Langkah (Misstep Ringan)',
+              detail: 'Permukaan tanah tidak rata menyebabkan pergelangan kaki tertekuk ringan saat berbaris.',
             },
           ],
       p3kProtocol: isEn
-        ? 'Limb immobilization, elastic compression, pressure immobilization for venomous bites & emergency stretcher transport.'
-        : 'Imobilisasi ekstremitas terkilir/patah, pembalutan elastis, imobilisasi tekanan pada gigitan satwa berbisa, dan evakuasi tandu darurat.',
-      moduleTag: isEn ? 'Field Evacuation & Venomous Bites Module' : 'Modul Evakuasi Lapangan & Gigitan Satwa Berbisa',
+        ? 'Standard field monitoring, antiseptic cleansing for minor grazes, rest on level ground & firm footwear adherence.'
+        : 'Pembersihan luka lecet ringan dengan antiseptik, istirahat sejenak di tanah datar, dan penyesuaian langkah regu.',
+      moduleTag: isEn ? 'Basic Field Care & Navigation Safety' : 'Modul Perawatan Luka Ringan & Keamanan Lapangan',
     },
     {
       id: 5,
       image: img4440,
       tag: isEn ? 'FIELD CASE 05 • LONG MARCH & PHYSICAL EXHAUSTION' : 'KASUS LAPANGAN 05 • LONG MARCH & KELELAHAN FISIK',
-      severity: isEn ? 'MODERATE - HIGH' : 'RISIKO SEDANG - TINGGI',
-      severityColor: 'text-yellow-400 bg-yellow-500/10 border-yellow-500/30',
+      level: 'moderate',
+      severity: isEn ? 'MODERATE RISK' : 'RISIKO SEDANG',
+      badgeClass: 'text-yellow-400 bg-yellow-500/10 border-yellow-500/30',
+      dotClass: 'bg-yellow-400',
+      accentText: 'text-yellow-400',
+      accentBg: 'bg-yellow-400',
+      hoverBorder: 'hover:border-yellow-500/40',
       title: isEn
         ? 'Open Road March & Heavy Expedition Backpacking'
         : 'Long March Jalur Terbuka & Beban Ekspedisi Punggung',
@@ -215,30 +245,30 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
       risks: isEn
         ? [
             {
-              title: 'Heat Exhaustion & Severe Dehydration',
-              detail: 'Massive sweat loss and electrolyte depletion triggering headache, nausea, and severe fatigue.',
+              title: 'Heat Exhaustion & Mild Dehydration',
+              detail: 'Sweat loss and electrolyte depletion triggering headache, thirst, and general fatigue.',
             },
             {
               title: 'Friction Blisters (Bulla Gesek)',
               detail: 'Repetitive friction between sweat-soaked socks and heavy boots causing painful intradermal blisters.',
             },
             {
-              title: 'Trapezius & Lumbar Muscle Spasms',
-              detail: 'Prolonged pressure from heavy shoulder straps causing acute neck, shoulder, and lower back strain.',
+              title: 'Trapezius & Lumbar Muscle Fatigue',
+              detail: 'Prolonged pressure from heavy shoulder straps causing acute neck and lower back soreness.',
             },
           ]
         : [
             {
-              title: 'Heat Exhaustion & Dehidrasi Berat',
-              detail: 'Kehilangan cairan dan elektrolit melalui keringat berlebih memicu pusing, kram, dan kelelahan ekstrem.',
+              title: 'Heat Exhaustion & Dehidrasi Sedang',
+              detail: 'Kehilangan cairan dan elektrolit melalui keringat berlebih memicu pusing, haus, dan rasa letih.',
             },
             {
               title: 'Luka Gesek & Bula Kaki (Blister)',
               detail: 'Gesekan kaus kaki basah keringat dan sepatu trekking berpotensi menimbulkan lepuh kulit perih.',
             },
             {
-              title: 'Trauma Otot Punggung & Bahu',
-              detail: 'Penekanan strap ransel berat berjam-jam memicu spasme otot trapezius dan lumbar.',
+              title: 'Kelelahan Otot Punggung & Bahu',
+              detail: 'Penekanan strap ransel berat berjam-jam memicu pegal dan kaku otot trapezius dan lumbar.',
             },
           ],
       p3kProtocol: isEn
@@ -250,8 +280,13 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
       id: 6,
       image: img4446,
       tag: isEn ? 'FIELD CASE 06 • HEAT STROKE & MIDDAY SUN EXPOSURE' : 'KASUS LAPANGAN 06 • CUACA TERIK & PAPARAN PANAS EKSTREM',
+      level: 'critical',
       severity: isEn ? 'CRITICAL RISK' : 'RISIKO KRITIS',
-      severityColor: 'text-red-400 bg-red-500/10 border-red-500/30',
+      badgeClass: 'text-red-400 bg-red-500/10 border-red-500/30',
+      dotClass: 'bg-red-500 animate-pulse',
+      accentText: 'text-red-400',
+      accentBg: 'bg-red-500',
+      hoverBorder: 'hover:border-red-500/40',
       title: isEn
         ? 'Open Field Debriefing Under Harsh Midday Tropical Sun'
         : 'Orientasi Lapangan Terbuka di Bawah Sinar Matahari Terik',
@@ -335,12 +370,26 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
           </p>
         </div>
 
-        <div className="flex items-center gap-2 shrink-0">
-          <span className="text-xs font-mono text-[#A3A3A3] bg-[#1a1a1a] border border-[#2e2e2e] px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-            <svg className="w-3.5 h-3.5 text-[#10B981]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <span>{isEn ? '6 Field Risk Scenarios (3 Rows)' : '6 Dokumentasi Risiko Lapangan (3 Baris)'}</span>
+        {/* Triage & Severity Color Legend */}
+        <div className="flex items-center flex-wrap gap-2 text-[10.5px] font-mono shrink-0">
+          <span className="text-[#737373] uppercase tracking-wider text-[10px] mr-1 hidden lg:inline">
+            {isEn ? 'Triage Legend:' : 'Indikator Risiko:'}
+          </span>
+          <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-semibold">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+            <span>{isEn ? 'Low' : 'Rendah'}</span>
+          </span>
+          <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/30 font-semibold">
+            <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
+            <span>{isEn ? 'Moderate' : 'Sedang'}</span>
+          </span>
+          <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/30 font-semibold">
+            <span className="w-1.5 h-1.5 rounded-full bg-orange-400" />
+            <span>{isEn ? 'High' : 'Tinggi'}</span>
+          </span>
+          <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-red-500/10 text-red-400 border border-red-500/30 font-semibold">
+            <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+            <span>{isEn ? 'Critical' : 'Kritis'}</span>
           </span>
         </div>
       </div>
@@ -350,7 +399,7 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
         {cardsData.map((card, idx) => (
           <div
             key={card.id}
-            className="bg-[#141414] border border-[#262626] rounded-2xl p-5 flex flex-col justify-between hover:border-[#383838] transition-all duration-300 shadow-xl group/card"
+            className={`bg-[#141414] border border-[#262626] rounded-2xl p-5 flex flex-col justify-between ${card.hoverBorder} transition-all duration-300 shadow-xl group/card`}
           >
             <div>
               {/* Top Meta Bar */}
@@ -359,16 +408,17 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
                   {card.tag}
                 </span>
                 <span
-                  className={`px-2 py-0.5 rounded-full text-[10px] font-bold border tracking-wider uppercase shrink-0 ${card.severityColor}`}
+                  className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold border tracking-wider uppercase shrink-0 flex items-center gap-1.5 ${card.badgeClass}`}
                 >
-                  {card.severity}
+                  <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${card.dotClass}`} />
+                  <span>{card.severity}</span>
                 </span>
               </div>
 
               {/* IMAGE CONTAINER (Auto-Fit & Zero Cropping) */}
               <div
                 onClick={() => setLightboxIndex(idx)}
-                className="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-xl overflow-hidden bg-[#0A0A0A] border border-[#262626] flex items-center justify-center cursor-pointer group/img transition-all hover:border-[#10B981]/50 shadow-inner mb-4"
+                className={`relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-xl overflow-hidden bg-[#0A0A0A] border border-[#262626] flex items-center justify-center cursor-pointer group/img transition-all shadow-inner mb-4 ${card.hoverBorder}`}
                 title={isEn ? 'Click to inspect full photo' : 'Klik untuk perbesar foto'}
               >
                 {/* Ambient Blur Underlay - Fills the container gracefully with the photo's natural color tones */}
@@ -392,7 +442,7 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
 
                 {/* Magnify Tooltip Pill */}
                 <div className="absolute bottom-2.5 right-2.5 z-20 opacity-0 group-hover/img:opacity-100 transition-opacity duration-200 flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#0E0E0E]/95 border border-[#383838] backdrop-blur-md text-[10.5px] font-mono text-white shadow-xl">
-                  <svg className="w-3.5 h-3.5 text-[#10B981]" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                  <svg className={`w-3.5 h-3.5 ${card.accentText}`} fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
                   </svg>
                   <span>{isEn ? 'Expand' : 'Perbesar'}</span>
@@ -405,7 +455,7 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
               </div>
 
               {/* Card Title & Narrative */}
-              <h4 className="text-base sm:text-[17px] font-bold text-white mb-2 leading-snug group-hover/card:text-[#10B981] transition-colors">
+              <h4 className={`text-base sm:text-[17px] font-bold text-white mb-2 leading-snug transition-colors group-hover/card:${card.accentText}`}>
                 {card.title}
               </h4>
               <p className="text-xs text-[#8A8A8A] leading-relaxed mb-4">
@@ -415,7 +465,7 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
               {/* Detailed Injury Hazard List */}
               <div className="space-y-2 mb-4 bg-[#0e0e0e] border border-[#242424] rounded-xl p-3">
                 <div className="text-[10.5px] font-mono font-semibold text-[#A3A3A3] uppercase tracking-wider flex items-center gap-1.5 pb-1 border-b border-[#222222]">
-                  <svg className="w-3.5 h-3.5 text-rose-400 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <svg className={`w-3.5 h-3.5 ${card.accentText} shrink-0`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                   </svg>
                   <span>{isEn ? 'Potential Medical Hazards:' : 'Potensi Cedera Medis:'}</span>
@@ -424,10 +474,10 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
                 {card.risks.map((risk, rIdx) => (
                   <div key={rIdx} className="text-xs">
                     <span className="font-semibold text-[#EDEDED] flex items-center gap-1.5">
-                      <span className="w-1 h-1 rounded-full bg-rose-400 shrink-0" />
+                      <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${card.accentBg}`} />
                       {risk.title}
                     </span>
-                    <p className="text-[11px] text-[#808080] pl-2.5 mt-0.5 leading-normal">
+                    <p className="text-[11px] text-[#808080] pl-3 mt-0.5 leading-normal">
                       {risk.detail}
                     </p>
                   </div>
@@ -483,11 +533,11 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
               {/* Modal Top Bar */}
               <div className="flex items-center justify-between px-4 py-3 border-b border-[#262626] bg-[#161616]">
                 <div className="flex items-center gap-2 min-w-0 pr-2">
-                  <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse shrink-0" />
+                  <span className={`w-2.5 h-2.5 rounded-full shrink-0 ${cardsData[lightboxIndex].dotClass}`} />
                   <span className="text-xs font-mono font-bold text-white truncate">
                     {cardsData[lightboxIndex].title}
                   </span>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/25 shrink-0 hidden sm:inline">
+                  <span className={`text-[10px] font-mono px-2 py-0.5 rounded border tracking-wider uppercase shrink-0 hidden sm:inline ${cardsData[lightboxIndex].badgeClass}`}>
                     {cardsData[lightboxIndex].severity}
                   </span>
                 </div>
