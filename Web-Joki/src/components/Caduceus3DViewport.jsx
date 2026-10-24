@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import caduceusImg from '../assets/caduceus-chrome.png';
-import aryaHeroImg from '../assets/arya-pratama.jpg';
+import profileImg from '../assets/profilhitamputih.jpeg';
 
 export default function Caduceus3DViewport({ t, lang = 'id' }) {
   const containerRef = useRef(null);
@@ -282,9 +282,9 @@ export default function Caduceus3DViewport({ t, lang = 'id' }) {
           className="relative w-full h-full"
         >
           <img
-            src={aryaHeroImg}
+            src={profileImg}
             alt="Made Candra Susanta - Mahasiswa S1 Keperawatan STIKES Buleleng"
-            className="w-full h-full object-cover object-top filter grayscale contrast-110 brightness-95"
+            className="w-full h-full object-cover object-[center_20%] filter grayscale contrast-110 brightness-95"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/30 pointer-events-none" />
         </motion.div>

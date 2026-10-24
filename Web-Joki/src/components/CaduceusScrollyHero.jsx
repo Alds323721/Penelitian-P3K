@@ -1,7 +1,7 @@
 import { useRef, useMemo } from "react";
 import { motion, useScroll, useTransform, useSpring, useReducedMotion } from "framer-motion";
 import caduceusChrome from "../assets/caduceus-chrome.png";
-import aryaHeroImg from "../assets/arya-pratama.jpg";
+import profileImg from "../assets/profilhitamputih.jpeg";
 import { useDeviceDetect } from "../hooks/useDeviceDetect";
 
 export default function CaduceusScrollyHero({ lang = "id", translations, onNavigate }) {
@@ -52,7 +52,7 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
   const metricsOpacity = useTransform(smoothProgress, [0.60, 0.68, 0.88, 0.94], [0, 1, 1, 0]);
   const metricsY = useTransform(smoothProgress, [0.60, 0.68, 0.94], [30, 0, -30]);
 
-  // E. Foto Arya Pratama di Sisi Kanan (Aktif dari Gambar 1, 2, hingga 3)
+  // E. Foto Made Candra Susanta di Sisi Kanan (Aktif dari Gambar 1, 2, hingga 3)
   const photoOpacity = useTransform(smoothProgress, [0.14, 0.22, 0.96, 1], [0, 1, 1, 0]);
   const photoY = useTransform(smoothProgress, [0.14, 0.24], [30, 0]);
   const photoScale = useTransform(smoothProgress, [0.14, 0.24], [0.95, 1]);
@@ -288,7 +288,7 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
         </motion.div>
 
         {/* ========================================================= */}
-        {/* 5. FOTO ARYA PRATAMA (SISI KANAN - GAMBAR 1, 2, & 3) */}
+        {/* 5. FOTO MADE CANDRA SUSANTA (SISI KANAN - GAMBAR 1, 2, & 3) */}
         {/* ========================================================= */}
         <motion.div
           style={{
@@ -305,12 +305,12 @@ export default function CaduceusScrollyHero({ lang = "id", translations, onNavig
 
             {/* Standalone Grayscale Portrait */}
             <img
-              src={aryaHeroImg}
+              src={profileImg}
               alt="Made Candra Susanta - Mahasiswa S1 Keperawatan & Riset Edukasi P3K"
-              className="relative z-10 w-full h-auto max-h-[280px] sm:max-h-[380px] md:max-h-[440px] lg:max-h-[540px] xl:max-h-[580px] object-cover object-top filter grayscale contrast-115 brightness-95"
+              className="relative z-10 w-full h-auto max-h-[280px] sm:max-h-[380px] md:max-h-[440px] lg:max-h-[540px] xl:max-h-[580px] object-cover object-[center_15%] filter grayscale contrast-110 brightness-95"
               style={{
-                maskImage: 'linear-gradient(to bottom, black 68%, transparent 100%)',
-                WebkitMaskImage: 'linear-gradient(to bottom, black 68%, transparent 100%)',
+                maskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, black 75%, transparent 100%)',
                 transform: 'translateZ(0)',
               }}
               loading="eager"

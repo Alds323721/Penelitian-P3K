@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useMotionValue, useSpring } from 'framer-motion';
-import aryaHeroImg from '../assets/arya-pratama.jpg';
+import profileImg from '../assets/profilhitamputih.jpeg';
 import CaduceusBackground3D from '../components/CaduceusBackground3D';
 import CaduceusScrollyHero from '../components/CaduceusScrollyHero';
+import ScoutRiskCards from '../components/ScoutRiskCards';
 import Navbar from '../components/Navbar';
 import { translations } from '../locales/translations';
 
@@ -134,9 +135,9 @@ export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
 
                 <div className="flex items-center gap-3.5 mb-4">
                   <img
-                    src={aryaHeroImg}
+                    src={profileImg}
                     alt="Made Candra Susanta"
-                    className="w-12 h-12 rounded-xl object-cover object-top border border-[#262626] filter grayscale contrast-110 shrink-0"
+                    className="w-12 h-12 rounded-xl object-cover object-[center_28%] border border-[#262626] filter grayscale contrast-110 shrink-0"
                   />
                   <div>
                     <h3 className="text-lg font-bold text-white">
@@ -248,7 +249,13 @@ export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
                 {t.bento.card2.footer}
               </div>
             </div>
+          </div>
 
+          {/* DOKUMENTASI KEGIATAN PRAMUKA BERPOTENSI CEDERA (3 CARDS DI BAWAH DATA DIRI & RUANG LINGKUP) */}
+          <ScoutRiskCards lang={lang} onNavigate={onNavigate} />
+
+          {/* Row 2 Bento Grid: Prinsip Kerja & Komitmen Peneliti */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-6">
             {/* Card 3: 03 / CORE HABITS */}
             <div className="bg-[#141414] border border-[#262626] rounded-2xl p-6 flex flex-col justify-between hover:border-[#333333] transition-colors">
               <div>
@@ -319,9 +326,9 @@ export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
               {/* Author Attribution */}
               <div className="flex items-center gap-3 relative z-10 pt-4 border-t border-[#262626]">
                 <img
-                  src={aryaHeroImg}
+                  src={profileImg}
                   alt="Made Candra Susanta"
-                  className="w-10 h-10 rounded-full object-cover object-top border border-[#333333] filter grayscale contrast-110"
+                  className="w-10 h-10 rounded-full object-cover object-[center_28%] border border-[#333333] filter grayscale contrast-110"
                 />
                 <div>
                   <div className="text-sm font-bold text-white">{t.bento.card4.author}</div>
