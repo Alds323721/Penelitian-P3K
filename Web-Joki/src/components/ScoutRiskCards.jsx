@@ -71,6 +71,7 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
         ? 'Sterile Saline (NaCl) wound irrigation, antiseptic dressing, sterile bandaging & respiratory check.'
         : 'Irigasi luka dengan NaCl steril, pembersihan antiseptik, kassa steril, serta pemantauan ventilasi napas.',
       moduleTag: isEn ? 'Wound Care & Trauma Module' : 'Modul Asuhan Luka & Kedaruratan Trauma',
+      topicId: 'luka-sayat-robek',
     },
     {
       id: 2,
@@ -122,6 +123,7 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
         ? 'R.I.C.E. protocol for sprains, rigid anatomical splinting, careful foreign body handling & elastic compression.'
         : 'Protokol R.I.C.E. (Rest, Ice, Compression, Elevation), pencabutan benda asing hati-hati, fiksasi bidai/spalk, dan balut tekan.',
       moduleTag: isEn ? 'Fracture & Sprain Splinting Module' : 'Modul Imobilisasi Fraktur & Pembidaian Sprain',
+      topicId: 'keseleo',
     },
     {
       id: 3,
@@ -130,7 +132,7 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
       level: 'critical',
       severity: isEn ? 'CRITICAL RISK' : 'RISIKO KRITIS',
       badgeClass: 'text-red-400 bg-red-500/10 border-red-500/30',
-      dotClass: 'bg-red-500 animate-pulse',
+      dotClass: 'bg-red-500',
       accentText: 'text-red-400',
       accentBg: 'bg-red-500',
       hoverBorder: 'hover:border-red-500/40',
@@ -173,6 +175,7 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
         ? 'Immediate airway clearance / Heimlich maneuver, clearing oral cavity & insect bite management.'
         : 'Manuver pembebasan jalan napas cepat (Heimlich / finger sweep), pembersihan rongga mulut, dan penanganan luka gigitan serangga.',
       moduleTag: isEn ? 'CPR, Choking & Basic Life Support' : 'Modul RJP, Manuver Tersedak & BHD',
+      topicId: 'tersedak',
     },
     {
       id: 4,
@@ -224,6 +227,7 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
         ? 'Standard field monitoring, antiseptic cleansing for minor grazes, rest on level ground & firm footwear adherence.'
         : 'Pembersihan luka lecet ringan dengan antiseptik, istirahat sejenak di tanah datar, dan penyesuaian langkah regu.',
       moduleTag: isEn ? 'Basic Field Care & Navigation Safety' : 'Modul Perawatan Luka Ringan & Keamanan Lapangan',
+      topicId: 'luka-lecet',
     },
     {
       id: 5,
@@ -275,6 +279,7 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
         ? 'Gradual oral electrolyte rehydration, sterile blister care without de-roofing, gentle stretching & shaded recovery.'
         : 'Rehidrasi bertahap larutan oralit/elektrolit, perawatan luka lepuh bula steril tanpa dipecahkan, peregangan otot, dan istirahat teduh.',
       moduleTag: isEn ? 'Dehydration & Blister Care Module' : 'Modul Penanganan Dehidrasi & Perawatan Blister',
+      topicId: 'heat-exhaustion',
     },
     {
       id: 6,
@@ -283,7 +288,7 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
       level: 'critical',
       severity: isEn ? 'CRITICAL RISK' : 'RISIKO KRITIS',
       badgeClass: 'text-red-400 bg-red-500/10 border-red-500/30',
-      dotClass: 'bg-red-500 animate-pulse',
+      dotClass: 'bg-red-500',
       accentText: 'text-red-400',
       accentBg: 'bg-red-500',
       hoverBorder: 'hover:border-red-500/40',
@@ -326,6 +331,7 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
         ? 'Immediate shaded relocation, shock position (legs elevated 30cm), active cooling packs at neck/axilla, loosen clothing & monitor vitals.'
         : 'Evakuasi cepat ke tempat sejuk, posisi syok (kaki diangkat 30 cm), kompres air dingin di leher/aksila, longgarkan seragam ketat, dan pantau tanda vital.',
       moduleTag: isEn ? 'Heat Stroke & Syncope Emergency Module' : 'Modul Kedaruratan Panas, Heat Stroke & Penanganan Pingsan',
+      topicId: 'pingsan',
     },
   ];
 
@@ -352,12 +358,9 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
       {/* Sub-Header Section */}
       <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#262626] pb-4">
         <div>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
-            <span className="text-xs font-mono font-semibold tracking-wider text-rose-400 uppercase">
-              {isEn ? 'URGENCY & FIELD RISK IDENTIFICATION' : 'IDENTIFIKASI KASUS LAPANGAN & URGENSI P3K'}
-            </span>
-          </div>
+          <span className="text-xs font-semibold tracking-wider text-[#10B981] uppercase block mb-2">
+            {isEn ? 'URGENCY & FIELD RISK IDENTIFICATION' : 'IDENTIFIKASI KASUS LAPANGAN & URGENSI P3K'}
+          </span>
           <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
             {isEn
               ? 'Real-World Scout Activities with High Injury Potential'
@@ -371,8 +374,8 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
         </div>
 
         {/* Triage & Severity Color Legend */}
-        <div className="flex items-center flex-wrap gap-2 text-[10.5px] font-mono shrink-0">
-          <span className="text-[#737373] uppercase tracking-wider text-[10px] mr-1 hidden lg:inline">
+        <div className="flex items-center flex-wrap gap-2 text-[11px] shrink-0">
+          <span className="text-[#737373] uppercase tracking-wider text-[10px] mr-1 hidden lg:inline font-medium">
             {isEn ? 'Triage Legend:' : 'Indikator Risiko:'}
           </span>
           <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-semibold">
@@ -388,7 +391,7 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
             <span>{isEn ? 'High' : 'Tinggi'}</span>
           </span>
           <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-red-500/10 text-red-400 border border-red-500/30 font-semibold">
-            <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
             <span>{isEn ? 'Critical' : 'Kritis'}</span>
           </span>
         </div>
@@ -487,22 +490,23 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
 
             {/* Bottom P3K Protocol & Module CTA */}
             <div className="pt-3 border-t border-[#262626] flex flex-col gap-2.5">
-              <div className="text-[11px] text-[#A3A3A3] flex items-start gap-1.5">
-                <span className="text-[#10B981] font-mono font-bold shrink-0">P3K:</span>
+              <div className="text-xs text-[#A3A3A3] flex items-start gap-1.5">
+                <span className="text-[#10B981] font-semibold shrink-0">P3K:</span>
                 <span className="leading-snug">{card.p3kProtocol}</span>
               </div>
 
               <div className="flex items-center justify-between gap-2 pt-1">
-                <span className="text-[10px] font-mono text-[#737373] truncate">
+                <span className="text-[11px] text-[#737373] truncate">
                   {card.moduleTag}
                 </span>
                 {onNavigate && (
                   <button
-                    onClick={() => onNavigate('Materi')}
-                    className="text-[11px] font-medium text-[#10B981] hover:text-[#34D399] transition-colors flex items-center gap-1 font-mono shrink-0 py-0.5"
+                    type="button"
+                    onClick={() => onNavigate('Materi', { modal: 'cedera', topicId: card.topicId })}
+                    className="text-xs font-semibold text-[#10B981] hover:text-[#34D399] transition-colors flex items-center gap-1 shrink-0 py-0.5 cursor-pointer"
                   >
                     <span>{isEn ? 'Study Protocol' : 'Pelajari Modul'}</span>
-                    <span>➔</span>
+                    <span>→</span>
                   </button>
                 )}
               </div>
@@ -606,11 +610,13 @@ export default function ScoutRiskCards({ lang = 'id', onNavigate }) {
 
                 {onNavigate && (
                   <button
+                    type="button"
                     onClick={() => {
+                      const targetTopic = cardsData[lightboxIndex]?.topicId || 'luka-lecet';
                       setLightboxIndex(null);
-                      onNavigate('Materi');
+                      onNavigate('Materi', { modal: 'cedera', topicId: targetTopic });
                     }}
-                    className="bg-[#10B981] hover:bg-[#059669] text-black font-semibold text-xs px-4 py-2 rounded-xl transition-colors font-mono shrink-0 text-center"
+                    className="bg-[#10B981] hover:bg-[#059669] text-black font-semibold text-xs px-4 py-2 rounded-xl transition-colors font-mono shrink-0 text-center cursor-pointer"
                   >
                     {isEn ? 'Open First Aid Guide ➔' : 'Buka Modul P3K ➔'}
                   </button>

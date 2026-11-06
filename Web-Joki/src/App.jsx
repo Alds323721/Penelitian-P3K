@@ -20,6 +20,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState(getInitialPage)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [targetPage, setTargetPage] = useState(getInitialPage)
+  const [initialMateriAction, setInitialMateriAction] = useState(null)
   const [lang, setLang] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('site_lang') || 'id'
@@ -53,9 +54,17 @@ function App() {
     return () => window.removeEventListener('popstate', handlePopState)
   }, [])
 
-  const handleNavigate = (page) => {
+  const handleNavigate = (page, actionPayload = null) => {
+    if (actionPayload) {
+      setInitialMateriAction(actionPayload)
+    } else {
+      setInitialMateriAction(null)
+    }
+
     if (page === currentPage && !isTransitioning) {
-      resetScroll(false)
+      if (!actionPayload) {
+        resetScroll(false)
+      }
       return
     }
 
@@ -86,6 +95,8 @@ function App() {
                 onNavigate={handleNavigate}
                 lang={lang}
                 onLanguageChange={handleLanguageChange}
+                initialAction={initialMateriAction}
+                onClearInitialAction={() => setInitialMateriAction(null)}
               />
             ) : (
               <Home

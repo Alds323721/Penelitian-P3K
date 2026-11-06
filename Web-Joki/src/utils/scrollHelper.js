@@ -19,3 +19,16 @@ export function resetScroll(immediate = true) {
     });
   }
 }
+
+export function scrollToSection(sectionId, offset = -72) {
+  if (typeof document === "undefined") return;
+  const el = document.getElementById(sectionId);
+  if (!el) return;
+
+  if (globalLenis) {
+    globalLenis.scrollTo(el, { offset });
+  } else {
+    const top = el.getBoundingClientRect().top + window.scrollY + offset;
+    window.scrollTo({ top, behavior: "smooth" });
+  }
+}

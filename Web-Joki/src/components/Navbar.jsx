@@ -33,15 +33,19 @@ export default function Navbar({
         {/* Brand Left */}
         <div
           onClick={() => handleNav('Home')}
-          className="flex items-center gap-1.5 sm:gap-2 shrink-0 cursor-pointer hover:opacity-85 transition-opacity py-1 select-none"
+          className="flex items-center gap-2 shrink-0 cursor-pointer hover:opacity-85 transition-opacity py-1 select-none"
         >
-          <svg
-            className="w-4 h-4 text-white shrink-0"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path d="M12 0L14.8 9.2L24 12L14.8 14.8L12 24L9.2 14.8L0 12L9.2 9.2L12 0Z" />
-          </svg>
+          <span className="w-5 h-5 rounded-md bg-[#10B981]/15 border border-[#10B981]/30 flex items-center justify-center text-[#10B981] shrink-0">
+            <svg
+              className="w-3 h-3"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.75"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </span>
           {/* Label adaptif: Ringkas di HP sempit, penuh di iPad & Desktop */}
           <span className="text-xs sm:text-[13px] font-semibold tracking-wider text-white hidden md:inline">
             {navT.profile}
