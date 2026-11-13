@@ -34,7 +34,7 @@
    - 7.2. [Modul Konsep Dasar & 7 Prinsip P3K](#72-modul-konsep-dasar--7-prinsip-p3k)
    - 7.3. [Modul Standarisasi 18 Peralatan Kotak P3K](#73-modul-standarisasi-18-peralatan-kotak-p3k)
    - 7.4. [Katalog 14 Kasus Cedera Lapangan Berbasis Triase](#74-katalog-14-kasus-cedera-lapangan-berbasis-triase)
-   - 7.5. [Fitur Progressive Disclosure Modal (SOP Lengkap)](#75-fitur-progressive-disclosure-modal-sop-lengkap)
+   - 7.5. [Fitur Progressive Disclosure Modal (Protokol Lengkap)](#75-fitur-progressive-disclosure-modal-protokol-lengkap)
 8. [Panduan Fitur-Fitur Khusus](#8-panduan-fitur-fitur-khusus)
    - 8.1. [Fitur Dwi-Bahasa (Bilingual ID / EN)](#81-fitur-dwi-bahasa-bilingual-id--en)
    - 8.2. [Pencarian Cepat & Filter Triase](#82-pencarian-cepat--filter-triase)
@@ -62,7 +62,7 @@ Aplikasi web ini lahir dari perpaduan antara **keilmuan akademis keperawatan gaw
 ### 2.1. Tujuan Pembelajaran
 1. **Peningkatan Pengetahuan**: Membekali anggota Pramuka dengan pemahaman teoritis komprehensif mengenai definisi P3K, 5 tujuan penanganan darurat, dan 7 prinsip keselamatan penolong dan korban.
 2. **Kesiapsiagaan Alat**: Mengenalkan 18 komponen standar peralatan kotak P3K beserta fungsi klinisnya untuk penanganan di lingkungan sekolah maupun perkemahan luar ruangan (*outdoor*).
-3. **Penguasaan Keterampilan Prosedural (SOP)**: Melatih kemampuan melakukan intervensi darurat secara terstruktur melalui 14 protokol penanganan cedera lapangan, mulai dari cedera ringan hingga kondisi kritis mengancam jiwa.
+3. **Penguasaan Keterampilan Prosedural**: Melatih kemampuan melakukan intervensi darurat secara terstruktur melalui 14 protokol penanganan cedera lapangan, mulai dari cedera ringan hingga kondisi kritis mengancam jiwa.
 4. **Pencegahan Malpraktik & Cedera Sekunder**: Menekankan larangan kritis (*Do Not*) agar penolong tidak melakukan tindakan berbahaya yang memperburuk kondisi korban di lokasi kejadian.
 
 ### 2.2. Manfaat Bagi Pengguna
@@ -166,7 +166,7 @@ Komponen `ScoutRiskCards` menyajikan 6 dokumentasi kasus nyata kegiatan Pramuka 
 #### Cara Berinteraksi dengan Kartu Kasus:
 - **Memperbesar Gambar (Lightbox)**: Klik pada foto aktivitas untuk membuka tampilan layar penuh (*fullscreen zoom*).
 - **Melihat Analisis Risiko**: Setiap kartu mencantumkan 3 rincian risiko klinis dan protokol P3K yang direkomendasikan.
-- **Membuka SOP Terkait Langsung**: Klik tombol **`Pelajari Modul Terkait →`** di bagian bawah kartu untuk langsung dialihkan ke Halaman Materi dan membuka modal protokol medis yang sesuai.
+- **Membuka Protokol Terkait Langsung**: Klik tombol **`Pelajari Modul Terkait →`** di bagian bawah kartu untuk langsung dialihkan ke Halaman Materi dan membuka modal protokol medis yang sesuai.
 
 ### 6.5. Tiga Pilar Filosofis Edukasi P3K
 Membahas 3 fondasi pengembangan kurikulum:
@@ -182,7 +182,7 @@ Membahas 3 fondasi pengembangan kurikulum:
 
 ## 7. PANDUAN PENGGUNAAN HALAMAN MATERI & PROTOKOL KLINIS
 
-Halaman Materi (`/Materi`) merupakan repositori utama seluruh bahan ajar, inventaris perlengkapan medis, dan SOP tindakan gawat darurat.
+Halaman Materi (`/Materi`) merupakan repositori utama seluruh bahan ajar, inventaris perlengkapan medis, dan protokol tindakan gawat darurat.
 
 ### 7.1. Akses dan Ikhtisar Pokok Materi P3K
 Di bagian atas halaman, terdapat kartu ikhtisar **Konsep Pertolongan Pertama Pada Kecelakaan** yang memuat 3 pokok materi penelitian:
@@ -273,7 +273,7 @@ Katalog dikelompokkan ke dalam 3 tingkatan keparahan (*clinical triage*):
 
 ---
 
-### 7.5. Fitur Progressive Disclosure Modal (SOP Lengkap)
+### 7.5. Fitur Progressive Disclosure Modal (Protokol Lengkap)
 
 Saat Anda memilih salah satu dari 14 topik cedera, jendela *Progressive Disclosure Modal* akan terbuka dengan tata letak komprehensif:
 
@@ -348,7 +348,7 @@ Simpan tabel ini sebagai ringkasan saku saat bertugas di posko kesehatan atau pe
 | 14 | **Termometer** | Mengukur suhu tubuh saat demam atau sengatan panas | Standar |
 | 15 | **Senter Medis (*Penlight*)** | Memeriksa refleks pupil, rongga mulut, & jalan napas | Standar |
 | 16 | **Kantong Plastik Medis** | Pembuangan kassa bekas darah agar tidak mencemari lingkungan | Standar |
-| 17 | **Buku Panduan Saku P3K** | Rujukan cepat langkah SOP saat kondisi panik di lapangan | Standar |
+| 17 | **Buku Panduan Saku P3K** | Rujukan cepat langkah penanganan saat kondisi panik di lapangan | Standar |
 | 18 | **Bidai (*Spalk*)** | Imobilisasi fraktur tulang panjang & dislokasi sendi | **Alat Utama** |
 
 ---
@@ -385,7 +385,7 @@ Simpan tabel ini sebagai ringkasan saku saat bertugas di posko kesehatan atau pe
 ## 10. PERTANYAAN YANG SERING DIAJUKAN (FAQ) & SOLUSI KENDALA
 
 ### Q1: Apakah materi di web ini boleh diunduh dan dicetak untuk kegiatan latihan Pramuka di gugus depan kami?
-> **Jawaban**: **Sangat diperbolehkan.** Seluruh modul dan SOP dilisensikan dengan Creative Commons *CC BY-NC-SA 4.0*. Anda diizinkan untuk mengunduh, mencetak materi sebagai buku saku, dan menggunakannya untuk kebutuhan latihan rutin Pramuka, PMR, pelatihan Saka Bhayangkara/Saka Bakti Husada, maupun kegiatan relawan tanpa dipungut biaya apa pun. Cantumkan atribusi peneliti (*Made Candra Susanta / STIKES Buleleng*).
+> **Jawaban**: **Sangat diperbolehkan.** Seluruh modul dan protokol panduan dilisensikan dengan Creative Commons *CC BY-NC-SA 4.0*. Anda diizinkan untuk mengunduh, mencetak materi sebagai buku saku, dan menggunakannya untuk kebutuhan latihan rutin Pramuka, PMR, pelatihan Saka Bhayangkara/Saka Bakti Husada, maupun kegiatan relawan tanpa dipungut biaya apa pun. Cantumkan atribusi peneliti (*Made Candra Susanta / STIKES Buleleng*).
 
 ### Q2: Bagaimana jika animasi 3D tongkat Caduceus di halaman awal terasa agak berat di smartphone saya?
 > **Jawaban**: Sistem telah dilengkapi deteksi perangkat pintar (*device detection hook*). Pada smartphone dengan daya grafis terbatas, animasi 3D secara otomatis dialihkan ke mode statis ringan dengan pegas redaman adaptif sehingga tidak menghabiskan baterai atau membuat layar tersendat (*lag*).

@@ -187,7 +187,7 @@ export const translations = {
         },
         {
           q: 'Apakah seluruh materi di website ini boleh digunakan untuk pelatihan internal institusi atau ambalan?',
-          a: 'Ya, seluruh modul panduan dan SOP didistribusikan dengan lisensi terbuka Creative Commons (CC BY-SA 4.0). Anda diizinkan untuk mengunduh, mencetak, dan menggunakannya untuk kebutuhan latihan rutin Pramuka, PMR, relawan, maupun pelatihan internal instansi Anda.',
+          a: 'Ya, seluruh modul panduan dan protokol penanganan didistribusikan dengan lisensi terbuka Creative Commons (CC BY-SA 4.0). Anda diizinkan untuk mengunduh, mencetak, dan menggunakannya untuk kebutuhan latihan rutin Pramuka, PMR, relawan, maupun pelatihan internal instansi Anda.',
         },
         {
           q: 'Bagaimana cara berdiskusi atau berkolaborasi dalam edukasi P3K?',
@@ -324,12 +324,12 @@ export const translations = {
             'Penanganan darurat sumbatan jalan napas dan henti jantung-paru dalam periode emas (< 4 menit) yang krusial.',
           box1: { val: '100–120 /mnt', sub: 'Kompresi Dada (Kedalaman 5–6 cm)' },
           box2: { val: '30 : 2 & 5 : 5', sub: 'Rasio RJP & 5 Tepukan : 5 Dorongan' },
-          footerLabel: 'SOP Bantuan Hidup Dasar Lapangan',
-          btn: 'Buka SOP Kritis',
+          footerLabel: 'Protokol Bantuan Hidup Dasar Lapangan',
+          btn: 'Buka Protokol Kritis',
         },
         card4: {
           tag: 'KATALOG CEDERA LAPANGAN',
-          badges: ['13 TOPIK CEDERA', 'ZIDEMAN ET AL., 2021'],
+          badges: ['14 TOPIK CEDERA', 'ZIDEMAN ET AL., 2021'],
           title: 'Katalog Penanganan Cedera Lapangan',
           desc:
             'Prosedur pertolongan pertama terstruktur untuk trauma fisik, cedera muskuloskeletal, dan paparan lingkungan ekstrem selama perkemahan atau penjelajahan.',
@@ -345,8 +345,8 @@ export const translations = {
           ],
           package: {
             tag: 'MODUL LENGKAP',
-            title: 'SOP & Edukasi Visual',
-            desc: 'Dilengkapi tanda klinis, prosedur terstruktur, dan kotak peringatan larangan kritis (Jangan Dilakukan).',
+            title: '',
+            desc: '',
             btn: 'Eksplorasi Modul Cedera',
           },
         },
@@ -433,7 +433,7 @@ export const translations = {
             a: 'Seluruh prosedur mengacu pada European Resuscitation Council Guidelines for First Aid (Zideman et al., 2021) serta literatur keperawatan gawat darurat dan kesiapsiagaan kepramukaan terkini (Lubis, Hasibuan & Raudhatul, 2024; Budi et al., 2024; Setyaningsih, Pertiwi & Budhiaji, 2024).',
           },
           {
-            q: 'Bagaimana cara mengakses detail SOP setiap jenis cedera atau berdiskusi langsung dengan peneliti?',
+            q: 'Bagaimana cara mengakses detail panduan setiap jenis cedera atau berdiskusi langsung dengan peneliti?',
             a: 'Anda dapat membuka setiap modul interaktif secara langsung melalui tombol pada kartu materi di atas, atau menghubungi peneliti melalui tombol email di bagian bawah halaman untuk berdiskusi mengenai edukasi P3K.',
           },
         ],
@@ -641,7 +641,7 @@ export const translations = {
         },
         {
           q: 'Can all materials on this website be used for institutional or scout training?',
-          a: 'Yes, all guide modules and SOPs are distributed under the Creative Commons (CC BY-SA 4.0) open license. You are permitted to download, print, and use them for troop training or organizational needs with appropriate attribution.',
+          a: 'Yes, all guide modules and care protocols are distributed under the Creative Commons (CC BY-SA 4.0) open license. You are permitted to download, print, and use them for troop training or organizational needs with appropriate attribution.',
         },
         {
           q: 'How can I collaborate with you on nursing education or scout first aid?',
@@ -778,12 +778,12 @@ export const translations = {
             'Emergency interventions for airway obstruction and sudden cardiac arrest within the crucial <4 minute golden period.',
           box1: { val: '100–120 /min', sub: 'Chest Compression (5–6 cm Depth)' },
           box2: { val: '30 : 2 & 5 : 5', sub: 'CPR Ratio & 5 Back Blows : 5 Thrusts' },
-          footerLabel: 'Field Basic Life Support SOP',
-          btn: 'Open Critical SOP',
+          footerLabel: 'Field Basic Life Support Protocols',
+          btn: 'Open Critical Protocol',
         },
         card4: {
           tag: 'FIELD INJURY CATALOG',
-          badges: ['13 INJURY TOPICS', 'ZIDEMAN ET AL., 2021'],
+          badges: ['14 INJURY TOPICS', 'ZIDEMAN ET AL., 2021'],
           title: 'Field Injury Care Catalog',
           desc:
             'Comprehensive first aid procedures for physical trauma, musculoskeletal injuries, and extreme environmental exposures during camps or expeditions.',
@@ -799,8 +799,8 @@ export const translations = {
           ],
           package: {
             tag: 'COMPLETE MODULE',
-            title: 'SOP & Visual Education',
-            desc: 'Features clinical signs, structured procedures, and critical warning callouts (Do Not).',
+            title: '',
+            desc: '',
             btn: 'Explore Injury Modules',
           },
         },
@@ -887,7 +887,7 @@ export const translations = {
             a: 'All procedures refer to the European Resuscitation Council Guidelines for First Aid (Zideman et al., 2021) alongside recent emergency nursing and scouting preparedness literature (Lubis, Hasibuan & Raudhatul, 2024; Budi et al., 2024; Setyaningsih, Pertiwi & Budhiaji, 2024).',
           },
           {
-            q: 'How can I access the detailed SOP for each injury type or discuss directly with the researcher?',
+            q: 'How can I access the detailed protocols for each injury type or discuss directly with the researcher?',
             a: 'You can open every interactive module directly via the buttons on the material cards above, or contact the researcher through the email button at the bottom of the page for first aid educational discussions.',
           },
         ],

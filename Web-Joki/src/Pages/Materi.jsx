@@ -412,15 +412,18 @@ export default function Materi({
 
           {/* Full-Width Card 4: Katalog Penanganan Cedera Lapangan */}
           <div className="bg-[#141414] border border-[#262626] rounded-2xl p-6 sm:p-7 hover:border-[#333333] transition-colors">
-            <div className="flex flex-col lg:flex-row items-stretch justify-between gap-6">
-              {/* Left Details */}
-              <div className="flex-1">
+            {/* Header: Title, Badges, & Action Button */}
+            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6">
+              <div className="max-w-3xl">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
                   <span className="text-xs font-semibold tracking-wider text-[#8A8A8A] uppercase">
                     {t.bento.card4.tag}
                   </span>
                   {t.bento.card4.badges.map((b, idx) => (
-                    <span key={idx} className="bg-[#1c1b1b] border border-[#262626] text-[11px] font-medium text-[#10B981] px-2.5 py-0.5 rounded">
+                    <span
+                      key={idx}
+                      className="bg-[#1c1b1b] border border-[#262626] text-[11px] font-medium text-[#10B981] px-2.5 py-0.5 rounded"
+                    >
                       {b}
                     </span>
                   ))}
@@ -431,62 +434,54 @@ export default function Materi({
                   {t.bento.card4.title}
                 </h3>
 
-                <p className="text-xs sm:text-sm text-[#A3A3A3] leading-relaxed mb-5 max-w-3xl">
+                <p className="text-xs sm:text-sm text-[#A3A3A3] leading-relaxed">
                   {t.bento.card4.desc}
                 </p>
-
-                {/* 3 Horizontal Categories */}
-                {t.bento.card4.categories && (
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    {t.bento.card4.categories.map((cat, idx) => {
-                      const defaultTopicByCat =
-                        idx === 0 ? 'luka-lecet' : idx === 1 ? 'patah-tulang' : 'luka-bakar';
-                      return (
-                        <div
-                          key={idx}
-                          onClick={() => openCederaTopic(defaultTopicByCat)}
-                          className="bg-[#1A1A1A] hover:bg-[#232323] border border-[#262626] hover:border-[#3a3a3a] rounded-xl p-3.5 transition-colors cursor-pointer"
-                        >
-                          <div className="flex items-center justify-between gap-2 mb-1">
-                            <span className="text-xs font-bold text-white">{cat.name}</span>
-                            <span className="text-[11px] font-medium text-[#10B981] shrink-0">
-                              {cat.count}
-                            </span>
-                          </div>
-                          <p className="text-[11px] text-[#8A8A8A] leading-relaxed">{cat.desc}</p>
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
               </div>
 
-              {/* Right Box: Paket Modul Lengkap */}
-              <div className="border-t lg:border-t-0 lg:border-l border-[#262626] pt-5 lg:pt-0 lg:pl-6 flex flex-col justify-between lg:w-72 shrink-0">
-                <div>
-                  <div className="text-[11px] text-[#10B981] font-semibold tracking-wider uppercase mb-1">
-                    {t.bento.card4.package.tag}
-                  </div>
-                  <div className="text-base font-bold text-white mb-1.5">
-                    {t.bento.card4.package.title}
-                  </div>
-                  <div className="text-xs text-[#8A8A8A] leading-relaxed mb-4">
-                    {t.bento.card4.package.desc}
-                  </div>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => openCederaTopic('luka-lecet')}
-                  className="w-full bg-white hover:bg-[#E5E5E5] text-[#0A0A0A] font-semibold text-xs py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-all shadow-md group cursor-pointer"
-                >
-                  <span>{t.bento.card4.package.btn}</span>
-                  <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </button>
-              </div>
+              {/* Action Button */}
+              <button
+                type="button"
+                onClick={() => openCederaTopic('luka-lecet')}
+                className="bg-white hover:bg-[#E5E5E5] text-[#0A0A0A] font-semibold text-xs py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-all shadow-md group cursor-pointer shrink-0 self-start sm:mt-1"
+              >
+                <span>{t.bento.card4.package.btn || (lang === 'id' ? 'Eksplorasi Modul Cedera' : 'Explore Injury Modules')}</span>
+                <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </button>
             </div>
+
+            {/* 3 Horizontal Categories (Full Width Grid) */}
+            {t.bento.card4.categories && (
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 mb-6">
+                {t.bento.card4.categories.map((cat, idx) => {
+                  const defaultTopicByCat =
+                    idx === 0 ? 'luka-lecet' : idx === 1 ? 'patah-tulang' : 'luka-bakar';
+                  return (
+                    <div
+                      key={idx}
+                      onClick={() => openCederaTopic(defaultTopicByCat)}
+                      className="bg-[#1A1A1A] hover:bg-[#232323] border border-[#262626] hover:border-[#383838] rounded-xl p-4 transition-all duration-200 cursor-pointer group flex flex-col justify-between"
+                    >
+                      <div>
+                        <div className="flex items-center justify-between gap-2 mb-2">
+                          <span className="text-xs sm:text-sm font-bold text-white group-hover:text-[#10B981] transition-colors">{cat.name}</span>
+                          <span className="text-[11px] font-semibold text-[#10B981] bg-[#10B981]/10 border border-[#10B981]/25 px-2 py-0.5 rounded shrink-0">
+                            {cat.count}
+                          </span>
+                        </div>
+                        <p className="text-[11px] text-[#8A8A8A] group-hover:text-[#A3A3A3] transition-colors leading-relaxed">{cat.desc}</p>
+                      </div>
+                      <div className="mt-3 pt-2.5 border-t border-[#262626] flex items-center justify-between text-[11px] text-[#8A8A8A] group-hover:text-white transition-colors">
+                        <span>{lang === 'id' ? 'Buka Kategori' : 'Open Category'}</span>
+                        <span className="group-hover:translate-x-1 transition-transform">→</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
 
             {/* Interactive Quick-Access Grid of All 14 Injury Topics */}
             <div className="mt-6 pt-6 border-t border-[#222222]">
