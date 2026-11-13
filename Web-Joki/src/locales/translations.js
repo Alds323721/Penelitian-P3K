@@ -231,13 +231,12 @@ export const translations = {
         },
         ecgCard: {
           systemLabel: 'POKOK MATERI PENELITIAN',
-          repoTitle: 'Kurikulum P3K & Kesiapsiagaan Pramuka',
+          repoTitle: 'Konsep Pertolongan Pertama Pada Kecelakaan',
           activeBadge: 'RISET TERVERIFIKASI',
           modules: [
             { no: '01', title: 'Konsep Dasar & 7 Prinsip P3K', desc: 'Definisi, 5 tujuan, & prinsip keselamatan (Lubis et al., 2024)' },
             { no: '02', title: 'Standarisasi 18 Alat Kotak P3K', desc: 'Inventaris perlengkapan medis wajib kegiatan Pramuka' },
-            { no: '03', title: 'Protokol Kritis RJP & Tersedak', desc: 'Kompresi dada 100–120/mnt & penanganan sumbatan jalan napas' },
-            { no: '04', title: 'Katalog Penanganan Cedera Lapangan', desc: '14 protokol klinis cedera Pramuka (Zideman et al., 2021)' },
+            { no: '03', title: 'Katalog Penanganan Cedera Lapangan', desc: '14 protokol klinis cedera Pramuka (Zideman et al., 2021)' },
           ],
           accessStatusLabel: 'Fokus Penelitian',
           accessStatusValue: 'Kesiapsiagaan Pramuka',
@@ -331,7 +330,7 @@ export const translations = {
         card4: {
           tag: 'KATALOG CEDERA LAPANGAN',
           badges: ['13 TOPIK CEDERA', 'ZIDEMAN ET AL., 2021'],
-          title: 'Katalog Penanganan Cedera Lapangan Pramuka Terstruktur',
+          title: 'Katalog Penanganan Cedera Lapangan',
           desc:
             'Prosedur pertolongan pertama terstruktur untuk trauma fisik, cedera muskuloskeletal, dan paparan lingkungan ekstrem selama perkemahan atau penjelajahan.',
           categories: [
@@ -686,13 +685,12 @@ export const translations = {
         },
         ecgCard: {
           systemLabel: 'RESEARCH CORE CURRICULUM',
-          repoTitle: 'First Aid & Scout Readiness Modules',
+          repoTitle: 'First Aid Core Concepts',
           activeBadge: 'VALIDATED RESEARCH',
           modules: [
             { no: '01', title: 'Core Concepts & 7 First Aid Principles', desc: 'Definition, 5 objectives, & safety principles (Lubis et al., 2024)' },
             { no: '02', title: '18 First Aid Kit Equipment Standards', desc: 'Mandatory medical supplies inventory for scouting activities' },
-            { no: '03', title: 'Critical CPR & Choking Protocols', desc: '100–120/min chest compressions & airway obstruction care' },
-            { no: '04', title: 'Scout Field Injury Care Catalog', desc: '14 clinical first aid injury protocols (Zideman et al., 2021)' },
+            { no: '03', title: 'Scout Field Injury Care Catalog', desc: '14 clinical first aid injury protocols (Zideman et al., 2021)' },
           ],
           accessStatusLabel: 'Research Focus',
           accessStatusValue: 'Scout Emergency Readiness',
@@ -786,7 +784,7 @@ export const translations = {
         card4: {
           tag: 'FIELD INJURY CATALOG',
           badges: ['13 INJURY TOPICS', 'ZIDEMAN ET AL., 2021'],
-          title: 'Structured Scout Field Injury Catalog',
+          title: 'Field Injury Care Catalog',
           desc:
             'Comprehensive first aid procedures for physical trauma, musculoskeletal injuries, and extreme environmental exposures during camps or expeditions.',
           categories: [
