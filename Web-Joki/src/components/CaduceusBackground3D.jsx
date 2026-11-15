@@ -26,7 +26,7 @@ export default function CaduceusBackground3D({ smoothX, smoothY, opacity = 0.35 
     >
       {/* 1. Subtle Orbital / Technical Radar Rings in Background */}
       <div className="absolute inset-0 flex items-center justify-center opacity-30 pointer-events-none">
-        <div className="w-[96%] h-[96%] rounded-full border border-white/[0.05] animate-pulse" />
+        <div className="w-[96%] h-[96%] rounded-full border border-white/[0.05]" />
         <div className="w-[72%] h-[72%] rounded-full border border-white/[0.04] border-dashed" />
         <div className="w-[45%] h-[45%] rounded-full border border-white/[0.02]" />
       </div>
@@ -115,7 +115,7 @@ export default function CaduceusBackground3D({ smoothX, smoothY, opacity = 0.35 
               src={caduceusImg}
               alt="Simbol Medis Caduceus 3D Background"
               draggable={false}
-              className="w-full h-full object-contain filter drop-shadow-[0_22px_40px_rgba(0,0,0,0.95)] drop-shadow-[0_0_30px_rgba(255,255,255,0.25)] brightness-105 contrast-105 pointer-events-none select-none"
+              className="w-full h-full object-contain filter drop-shadow-[0_22px_40px_rgba(0,0,0,0.85)] brightness-105 contrast-105 pointer-events-none select-none"
               style={{
                 transform: 'translateZ(25px)',
               }}

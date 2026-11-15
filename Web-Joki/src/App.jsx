@@ -80,6 +80,7 @@ function App() {
     setTimeout(() => {
       setCurrentPage(page)
       setIsTransitioning(false)
+      resetScroll(true)
     }, 450)
   }
 

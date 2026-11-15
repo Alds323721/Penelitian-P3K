@@ -28,7 +28,6 @@ export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
   const handleSkillModuleClick = (idx) => {
     if (idx === 0) navigateTo('Materi', { modal: 'konsep' });
     else if (idx === 1) navigateTo('Materi', { modal: 'peralatan' });
-    else if (idx === 2) navigateTo('Materi', { modal: 'cedera', topicId: 'henti-jantung' });
     else navigateTo('Materi', { modal: 'cedera', topicId: 'luka-lecet' });
   };
 
@@ -170,7 +169,7 @@ export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
                           0{idx + 1}
                         </span>
                         <div className="min-w-0">
-                          <p className="text-xs sm:text-sm font-semibold text-white group-hover:text-[#10B981] transition-colors leading-tight truncate">
+                          <p className="text-xs sm:text-sm font-semibold text-white group-hover:text-[#10B981] transition-colors leading-tight">
                             {skill.name}
                           </p>
                           <p className="text-[11px] text-[#8A8A8A] mt-0.5">{skill.category || 'Materi Inti'}</p>
@@ -261,119 +260,7 @@ export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
         </section>
 
         {/* ========================================================= */}
-        {/* 5. PILAR FILOSOFIS (3 PRINSIP FUNDAMENTAL - KONSISTEN TANPA SAAS PRICING CARD) */}
-        {/* ========================================================= */}
-        <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-16 border-t border-[#222222]">
-          <div className="mb-10">
-            <span className="text-xs font-semibold tracking-wider text-[#10B981] uppercase block mb-2">
-              {t.pillars.eyebrow}
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-[34px] font-bold text-white tracking-[-0.02em]">
-              {t.pillars.sectionTitle}
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-            {/* Pilar 1 */}
-            <div className="bg-[#141414] border border-[#262626] rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:border-[#333333] transition-colors">
-              <div>
-                <span className="text-xs font-semibold tracking-wider text-[#8A8A8A] uppercase block mb-3">
-                  {t.pillars.pilar1.tag}
-                </span>
-                <h3 className="text-xl font-bold text-white mb-3">{t.pillars.pilar1.title}</h3>
-                <p className="text-sm text-[#8A8A8A] leading-relaxed mb-6">
-                  {t.pillars.pilar1.desc}
-                </p>
-
-                <div className="space-y-3 mb-8">
-                  {t.pillars.pilar1.checks.map((check, idx) => (
-                    <div key={idx} className="flex items-center gap-2.5 text-xs sm:text-[13px] text-[#EDEDED]">
-                      <svg className="w-4 h-4 text-[#10B981] shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>{check}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <button
-                type="button"
-                onClick={() => navigateTo('Materi', { modal: 'konsep' })}
-                className="w-full bg-[#1c1b1b] hover:bg-[#262626] border border-[#262626] text-white text-xs sm:text-sm font-medium py-3 px-4 rounded-lg transition-colors cursor-pointer"
-              >
-                {t.pillars.pilar1.btn}
-              </button>
-            </div>
-
-            {/* Pilar 2: Konsisten Dark Card dengan Aksen Emerald Halus */}
-            <div className="bg-[#141414] border border-[#10B981]/35 rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:border-[#10B981]/60 transition-colors">
-              <div>
-                <span className="text-xs font-semibold tracking-wider text-[#10B981] uppercase block mb-3">
-                  {t.pillars.pilar2.tag}
-                </span>
-                <h3 className="text-xl font-bold text-white mb-3">{t.pillars.pilar2.title}</h3>
-                <p className="text-sm text-[#8A8A8A] leading-relaxed mb-6">
-                  {t.pillars.pilar2.desc}
-                </p>
-
-                <div className="space-y-3 mb-8">
-                  {t.pillars.pilar2.checks.map((check, idx) => (
-                    <div key={idx} className="flex items-center gap-2.5 text-xs sm:text-[13px] text-[#EDEDED]">
-                      <svg className="w-4 h-4 text-[#10B981] shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>{check}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <button
-                type="button"
-                onClick={() => navigateTo('Materi')}
-                className="w-full bg-white hover:bg-[#E5E5E5] text-[#0A0A0A] text-xs sm:text-sm font-semibold py-3 px-4 rounded-lg transition-colors cursor-pointer"
-              >
-                {t.pillars.pilar2.btn}
-              </button>
-            </div>
-
-            {/* Pilar 3 */}
-            <div className="bg-[#141414] border border-[#262626] rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:border-[#333333] transition-colors">
-              <div>
-                <span className="text-xs font-semibold tracking-wider text-[#8A8A8A] uppercase block mb-3">
-                  {t.pillars.pilar3.tag}
-                </span>
-                <h3 className="text-xl font-bold text-white mb-3">{t.pillars.pilar3.title}</h3>
-                <p className="text-sm text-[#8A8A8A] leading-relaxed mb-6">
-                  {t.pillars.pilar3.desc}
-                </p>
-
-                <div className="space-y-3 mb-8">
-                  {t.pillars.pilar3.checks.map((check, idx) => (
-                    <div key={idx} className="flex items-center gap-2.5 text-xs sm:text-[13px] text-[#EDEDED]">
-                      <svg className="w-4 h-4 text-[#10B981] shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>{check}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <button
-                type="button"
-                onClick={() => navigateTo('Materi', { modal: 'cedera', topicId: 'luka-lecet' })}
-                className="w-full bg-[#1c1b1b] hover:bg-[#262626] border border-[#262626] text-white text-xs sm:text-sm font-medium py-3 px-4 rounded-lg transition-colors cursor-pointer"
-              >
-                {t.pillars.pilar3.btn}
-              </button>
-            </div>
-          </div>
-        </section>
-
-        {/* ========================================================= */}
-        {/* 6. FAQ ACCORDION (TANYA JAWAB & TRANSPARANSI RISET) */}
+        {/* 5. FAQ ACCORDION (TANYA JAWAB & TRANSPARANSI RISET) */}
         {/* ========================================================= */}
         <section id="faq-riset" className="max-w-[860px] mx-auto px-4 sm:px-6 py-16">
           <div className="text-center mb-10">
@@ -405,9 +292,8 @@ export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
                     </span>
                     <span className="w-6 h-6 flex items-center justify-center shrink-0 text-[#8A8A8A]">
                       <svg
-                        className={`w-4 h-4 transition-transform duration-200 ${
-                          isOpen ? 'rotate-180' : ''
-                        }`}
+                        className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''
+                          }`}
                         fill="none"
                         stroke="currentColor"
                         strokeWidth="2"
@@ -430,7 +316,7 @@ export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
         </section>
 
         {/* ========================================================= */}
-        {/* 7. CTA INITIATION SECTION */}
+        {/* 6. CTA INITIATION SECTION */}
         {/* ========================================================= */}
         <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12">
           <div className="bg-[#141414] border border-[#262626] rounded-2xl p-6 sm:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
@@ -466,7 +352,7 @@ export default function Home({ onNavigate, lang = 'id', onLanguageChange }) {
       </main>
 
       {/* ========================================================= */}
-      {/* 8. FOOTER */}
+      {/* 7. FOOTER */}
       {/* ========================================================= */}
       <footer className="relative z-20 w-full border-t border-[#262626] bg-[#0E0E0E] py-8 mt-12">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#8A8A8A]">

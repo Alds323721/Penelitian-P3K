@@ -85,12 +85,11 @@ export const translations = {
       },
       card2: {
         tag: 'RUANG LINGKUP MATERI',
-        title: 'Fokus Kompetensi & Modul yang Diteliti',
+        title: 'Konsep Pertolongan Pertama Pada Kecelakaan',
         skills: [
-          { name: 'Edukasi & Asuhan Tanggap Darurat P3K', category: 'Modul Teori & Asuhan', status: 'Lengkap' },
-          { name: 'Standardisasi & Manajemen Kotak P3K', category: 'Pedoman Logistik & Kit', status: 'Lengkap' },
-          { name: 'Prosedur RJP / CPR & Resusitasi Lapangan', category: 'Keterampilan Lapangan', status: 'Lengkap' },
-          { name: 'Simulasi Tanggap Darurat Aktivitas Pramuka', category: 'Aplikasi Praktik Luar Ruangan', status: 'Lengkap' },
+          { name: 'Pengertian, Tujuan, Manfaat Konsep Dasar P3K', category: 'Modul Teori & Asuhan', status: 'Lengkap' },
+          { name: 'Jenis Peralatan P3K Beserta Fungsi/Kegunaannya', category: 'Pedoman Logistik & Kit', status: 'Lengkap' },
+          { name: 'Jenis-Jenis Cedera dan Penanganan P3K', category: 'Keterampilan Lapangan', status: 'Lengkap' },
         ],
         footer: 'Berlandaskan keilmuan akademis keperawatan STIKES Buleleng & pengalaman lapangan kepramukaan.',
       },
@@ -234,9 +233,9 @@ export const translations = {
           repoTitle: 'Konsep Pertolongan Pertama Pada Kecelakaan',
           activeBadge: 'RISET TERVERIFIKASI',
           modules: [
-            { no: '01', title: 'Konsep Dasar & 7 Prinsip P3K', desc: 'Definisi, 5 tujuan, & prinsip keselamatan (Lubis et al., 2024)' },
-            { no: '02', title: 'Standarisasi 18 Alat Kotak P3K', desc: 'Inventaris perlengkapan medis wajib kegiatan Pramuka' },
-            { no: '03', title: 'Katalog Penanganan Cedera Lapangan', desc: '14 protokol klinis cedera Pramuka (Zideman et al., 2021)' },
+            { no: '01', title: 'Pengertian, Tujuan, Manfaat Konsep Dasar P3K', desc: 'Definisi, 5 tujuan, & prinsip keselamatan (Lubis et al., 2024)' },
+            { no: '02', title: 'Jenis Peralatan P3K Beserta Fungsi/Kegunaannya', desc: 'Inventaris perlengkapan medis wajib kegiatan Pramuka' },
+            { no: '03', title: 'Jenis-Jenis Cedera dan Penanganan P3K', desc: '14 protokol klinis cedera Pramuka (Zideman et al., 2021)' },
           ],
           accessStatusLabel: 'Fokus Penelitian',
           accessStatusValue: 'Kesiapsiagaan Pramuka',
@@ -261,7 +260,7 @@ export const translations = {
         card1: {
           tag: 'KONSEP & PRINSIP DASAR',
           est: 'LUBIS ET AL., 2024',
-          title: 'Konsep Dasar & 7 Prinsip Penanganan P3K',
+          title: 'Pengertian, Tujuan, Manfaat Konsep Dasar P3K',
           desc:
             'Tindakan pertolongan pertama yang cepat dan tepat untuk menstabilkan kondisi korban sebelum bantuan medis tiba dalam kegiatan kepramukaan luar ruangan.',
           badges: ['Lubis et al., 2024', 'Budi et al., 2024'],
@@ -299,7 +298,7 @@ export const translations = {
         card2: {
           tag: 'STANDARISASI PERALATAN',
           regulation: '18 ITEM WAJIB',
-          title: 'Standarisasi Peralatan & Kotak P3K',
+          title: 'Jenis Peralatan P3K Beserta Fungsi/Kegunaannya',
           desc:
             'Pentingnya ketersediaan kotak P3K yang terorganisasi di sekolah dan kegiatan kepramukaan untuk memastikan penanganan awal yang cepat dan higienis.',
           pills: [
@@ -330,7 +329,7 @@ export const translations = {
         card4: {
           tag: 'KATALOG CEDERA LAPANGAN',
           badges: ['14 TOPIK CEDERA', 'ZIDEMAN ET AL., 2021'],
-          title: 'Katalog Penanganan Cedera Lapangan',
+          title: 'Jenis-Jenis Cedera Dan Penanganan P3K',
           desc:
             'Prosedur pertolongan pertama terstruktur untuk trauma fisik, cedera muskuloskeletal, dan paparan lingkungan ekstrem selama perkemahan atau penjelajahan.',
           categories: [
@@ -539,12 +538,11 @@ export const translations = {
       },
       card2: {
         tag: 'RESEARCH SCOPE & MODULES',
-        title: 'Core Competencies & Researched Modules',
+        title: 'Concepts of First Aid in Accidents',
         skills: [
-          { name: 'First Aid Emergency Care Education', category: 'Theoretical Care & Principles', status: 'Complete' },
-          { name: 'First Aid Kit Standardization & Management', category: 'Field Logistics & Equipment', status: 'Complete' },
-          { name: 'Cardiopulmonary Resuscitation (CPR)', category: 'Practical Field Skills', status: 'Complete' },
-          { name: 'Scouting Outdoor Emergency Simulation', category: 'Field Application & Preparedness', status: 'Complete' },
+          { name: 'Definition, Objectives, & Benefits of First Aid Concepts', category: 'Theoretical Care & Principles', status: 'Complete' },
+          { name: 'Types of First Aid Equipment & Their Functions', category: 'Field Logistics & Equipment', status: 'Complete' },
+          { name: 'Types of Injuries & First Aid Management', category: 'Practical Field Skills', status: 'Complete' },
         ],
         footer: 'Grounded in nursing science from STIKES Buleleng and practical field scouting experience.',
       },
@@ -688,9 +686,9 @@ export const translations = {
           repoTitle: 'First Aid Core Concepts',
           activeBadge: 'VALIDATED RESEARCH',
           modules: [
-            { no: '01', title: 'Core Concepts & 7 First Aid Principles', desc: 'Definition, 5 objectives, & safety principles (Lubis et al., 2024)' },
-            { no: '02', title: '18 First Aid Kit Equipment Standards', desc: 'Mandatory medical supplies inventory for scouting activities' },
-            { no: '03', title: 'Scout Field Injury Care Catalog', desc: '14 clinical first aid injury protocols (Zideman et al., 2021)' },
+            { no: '01', title: 'Definition, Objectives, & Benefits of First Aid Concepts', desc: 'Definition, 5 objectives, & safety principles (Lubis et al., 2024)' },
+            { no: '02', title: 'Types of First Aid Equipment & Their Functions', desc: 'Mandatory medical supplies inventory for scouting activities' },
+            { no: '03', title: 'Types of Injuries & First Aid Management', desc: '14 clinical first aid injury protocols (Zideman et al., 2021)' },
           ],
           accessStatusLabel: 'Research Focus',
           accessStatusValue: 'Scout Emergency Readiness',
@@ -715,7 +713,7 @@ export const translations = {
         card1: {
           tag: 'BASIC CONCEPTS & PRINCIPLES',
           est: 'LUBIS ET AL., 2024',
-          title: 'Core Concepts & 7 First Aid Principles',
+          title: 'Definition, Objectives, & Benefits of First Aid Concepts',
           desc:
             'Prompt and precise initial first aid measures to stabilize victim condition before medical help arrives during scouting outdoor activities.',
           badges: ['Lubis et al., 2024', 'Budi et al., 2024'],
@@ -753,7 +751,7 @@ export const translations = {
         card2: {
           tag: 'EQUIPMENT STANDARDIZATION',
           regulation: '18 MANDATORY ITEMS',
-          title: 'First Aid Kit & Equipment Standards',
+          title: 'Types of First Aid Equipment & Their Functions',
           desc:
             'The vital importance of well-organized first aid kits in schools and scouting activities to ensure rapid and hygienic initial care.',
           pills: [
@@ -784,7 +782,7 @@ export const translations = {
         card4: {
           tag: 'FIELD INJURY CATALOG',
           badges: ['14 INJURY TOPICS', 'ZIDEMAN ET AL., 2021'],
-          title: 'Field Injury Care Catalog',
+          title: 'Types of Injuries and First Aid Care',
           desc:
             'Comprehensive first aid procedures for physical trauma, musculoskeletal injuries, and extreme environmental exposures during camps or expeditions.',
           categories: [

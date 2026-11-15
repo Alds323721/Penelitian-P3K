@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import { translations } from '../locales/translations';
 import { materiData } from '../data/materiData';
-import { scrollToSection } from '../utils/scrollHelper';
+import { scrollToSection, getGlobalLenis } from '../utils/scrollHelper';
 import {
   KonsepPrinsipModal,
   PeralatanP3KModal,
@@ -36,6 +37,28 @@ export default function Materi({
       onClearInitialAction();
     }
   }, [initialAction, onClearInitialAction]);
+
+  const shouldReduceMotion = useReducedMotion();
+
+  // Pastikan Lenis menghitung ulang dimensi dokumen untuk scrolling yang presisi dan mulus
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const lenis = getGlobalLenis();
+      if (lenis) {
+        lenis.resize();
+      }
+    }, 120);
+    return () => clearTimeout(timer);
+  }, [selectedCategoryTab]);
+
+  const sectionFadeVariant = {
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    },
+  };
 
   const currentTranslations = translations[lang] || translations.id;
   const t = currentTranslations.materiPage;
@@ -90,7 +113,12 @@ export default function Materi({
         {/* ========================================================= */}
         {/* 2. HERO SECTION */}
         {/* ========================================================= */}
-        <section className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-12 sm:pt-16 md:pt-20 pb-16">
+        <motion.section
+          initial="hidden"
+          animate="visible"
+          variants={sectionFadeVariant}
+          className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-12 sm:pt-16 md:pt-20 pb-16"
+        >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Left Hero Content (7 Cols Desktop) */}
             <div className="lg:col-span-7 flex flex-col">
@@ -247,7 +275,7 @@ export default function Materi({
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* ========================================================= */}
         {/* 3. MARQUEE / TICKER BANNER */}
@@ -270,7 +298,14 @@ export default function Materi({
         {/* ========================================================= */}
         {/* 4. KONSEP PERTOLONGAN PERTAMA PADA KECELAKAAN (P3K) */}
         {/* ========================================================= */}
-        <section id="proyek-utama" className="max-w-[1200px] mx-auto px-4 sm:px-6 py-20">
+        <motion.section
+          id="proyek-utama"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={sectionFadeVariant}
+          className="max-w-[1200px] mx-auto px-4 sm:px-6 py-20"
+        >
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
             <div>
               <span className="text-xs font-semibold tracking-wider text-[#10B981] uppercase block mb-2">
@@ -287,7 +322,7 @@ export default function Materi({
 
           {/* Grid: 2 Columns (Card 1 & Card 2) */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5">
-            {/* Card 1: Konsep Dasar & 7 Prinsip Penanganan P3K */}
+            {/* Card 1: Pengertian, Tujuan, Manfaat Konsep Dasar P3K */}
             <div className="bg-[#141414] border border-[#262626] rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:border-[#333333] transition-colors">
               <div>
                 {/* Meta Header & Citation Badges */}
@@ -359,7 +394,7 @@ export default function Materi({
               </div>
             </div>
 
-            {/* Card 2: Standarisasi Peralatan & Kotak P3K */}
+            {/* Card 2: Jenis Peralatan P3K Beserta Fungsi/Kegunaannya */}
             <div className="bg-[#141414] border border-[#262626] rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:border-[#333333] transition-colors">
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -410,7 +445,7 @@ export default function Materi({
             </div>
           </div>
 
-          {/* Full-Width Card 4: Katalog Penanganan Cedera Lapangan */}
+          {/* Full-Width Card 4: Jenis-Jenis Cedera Dan Penanganan P3K */}
           <div className="bg-[#141414] border border-[#262626] rounded-2xl p-6 sm:p-7 hover:border-[#333333] transition-colors">
             {/* Header: Title, Badges, & Action Button */}
             <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6">
@@ -556,12 +591,18 @@ export default function Materi({
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* ========================================================= */}
         {/* 5. STATS SUMMARY (3 COLUMNS) */}
         {/* ========================================================= */}
-        <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-10 border-t border-[#262626]">
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={sectionFadeVariant}
+          className="max-w-[1200px] mx-auto px-4 sm:px-6 py-10 border-t border-[#262626]"
+        >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
             {t.stats.map((st, idx) => (
               <div key={idx} className="flex flex-col">
@@ -577,12 +618,18 @@ export default function Materi({
               </div>
             ))}
           </div>
-        </section>
+        </motion.section>
 
         {/* ========================================================= */}
         {/* 6. TINGKATAN MATERI PEMBELAJARAN (3 CARDS - KONSISTEN TRIASE KLINIS) */}
         {/* ========================================================= */}
-        <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-20">
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+          variants={sectionFadeVariant}
+          className="max-w-[1200px] mx-auto px-4 sm:px-6 py-20"
+        >
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
             <div>
               <span className="text-xs font-semibold tracking-wider text-[#10B981] uppercase block mb-2">
@@ -622,13 +669,10 @@ export default function Materi({
                       key={idx}
                       type="button"
                       onClick={() => openCederaTopic(level1TopicMap[idx] || 'luka-lecet')}
-                      className="w-full text-left flex items-center justify-between gap-2.5 text-xs text-[#EDEDED] hover:text-[#10B981] bg-[#1a1a1a] hover:bg-[#222222] border border-[#242424] rounded-lg px-3 py-2 transition-colors cursor-pointer"
+                      className="w-full text-left flex items-center gap-2.5 text-xs text-[#EDEDED] hover:text-[#10B981] bg-[#1a1a1a] hover:bg-[#222222] border border-[#242424] rounded-lg px-3 py-2 transition-colors cursor-pointer"
                     >
-                      <div className="flex items-center gap-2.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] shrink-0" />
-                        <span>{chk}</span>
-                      </div>
-                      <span className="text-xs text-[#8A8A8A]">→</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] shrink-0" />
+                      <span>{chk}</span>
                     </button>
                   ))}
                 </div>
@@ -668,13 +712,10 @@ export default function Materi({
                       key={idx}
                       type="button"
                       onClick={() => openCederaTopic(level2TopicMap[idx] || 'luka-sayat-robek')}
-                      className="w-full text-left flex items-center justify-between gap-2.5 text-xs text-[#EDEDED] hover:text-[#F59E0B] bg-[#1a1a1a] hover:bg-[#222222] border border-[#242424] rounded-lg px-3 py-2 transition-colors cursor-pointer"
+                      className="w-full text-left flex items-center gap-2.5 text-xs text-[#EDEDED] hover:text-[#F59E0B] bg-[#1a1a1a] hover:bg-[#222222] border border-[#242424] rounded-lg px-3 py-2 transition-colors cursor-pointer"
                     >
-                      <div className="flex items-center gap-2.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B] shrink-0" />
-                        <span>{chk}</span>
-                      </div>
-                      <span className="text-xs text-[#8A8A8A]">→</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B] shrink-0" />
+                      <span>{chk}</span>
                     </button>
                   ))}
                 </div>
@@ -714,13 +755,10 @@ export default function Materi({
                       key={idx}
                       type="button"
                       onClick={() => openCederaTopic(level3TopicMap[idx] || 'henti-jantung')}
-                      className="w-full text-left flex items-center justify-between gap-2.5 text-xs text-[#EDEDED] hover:text-[#EF4444] bg-[#1a1a1a] hover:bg-[#222222] border border-[#242424] rounded-lg px-3 py-2 transition-colors cursor-pointer"
+                      className="w-full text-left flex items-center gap-2.5 text-xs text-[#EDEDED] hover:text-[#EF4444] bg-[#1a1a1a] hover:bg-[#222222] border border-[#242424] rounded-lg px-3 py-2 transition-colors cursor-pointer"
                     >
-                      <div className="flex items-center gap-2.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0" />
-                        <span>{chk}</span>
-                      </div>
-                      <span className="text-xs text-[#8A8A8A]">→</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#EF4444] shrink-0" />
+                      <span>{chk}</span>
                     </button>
                   ))}
                 </div>
@@ -729,19 +767,25 @@ export default function Materi({
               <button
                 type="button"
                 onClick={() => openCederaTopic(t.levels.level3.topicId || 'henti-jantung')}
-                className="w-full bg-white hover:bg-[#E5E5E5] text-[#0A0A0A] text-xs font-semibold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors shadow-md cursor-pointer"
+                className="w-full bg-[#1c1b1b] hover:bg-[#252525] border border-[#262626] text-white text-xs font-semibold py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors cursor-pointer"
               >
                 <span>{t.levels.level3.btn}</span>
                 <span>→</span>
               </button>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* ========================================================= */}
         {/* 7. FAQ ACCORDION (TANYA JAWAB PENGGUNAAN MATERI) */}
         {/* ========================================================= */}
-        <section className="max-w-[860px] mx-auto px-4 sm:px-6 py-16">
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+          variants={sectionFadeVariant}
+          className="max-w-[860px] mx-auto px-4 sm:px-6 py-16"
+        >
           <div className="text-center mb-10">
             <span className="text-xs font-semibold tracking-wider text-[#10B981] uppercase block mb-2">
               {t.faq.eyebrow}
@@ -791,12 +835,18 @@ export default function Materi({
               );
             })}
           </div>
-        </section>
+        </motion.section>
 
         {/* ========================================================= */}
         {/* 8. MASUKAN RISET CTA BANNER */}
         {/* ========================================================= */}
-        <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12">
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={sectionFadeVariant}
+          className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12"
+        >
           <div className="bg-[#141414] border border-[#262626] rounded-2xl p-6 sm:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="max-w-2xl">
               <span className="text-xs font-semibold tracking-wider text-[#10B981] uppercase block mb-2">
@@ -826,7 +876,7 @@ export default function Materi({
               </svg>
             </a>
           </div>
-        </section>
+        </motion.section>
       </main>
 
       {/* ========================================================= */}

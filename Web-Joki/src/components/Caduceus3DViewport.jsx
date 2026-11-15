@@ -123,7 +123,7 @@ export default function Caduceus3DViewport({ t, lang = 'id' }) {
 
       {/* Subtle Circular Radar / Alignment Rings */}
       <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-        <div className="w-[82%] h-[82%] rounded-full border border-white/[0.04] animate-pulse" />
+        <div className="w-[82%] h-[82%] rounded-full border border-white/[0.04]" />
         <div className="w-[58%] h-[58%] rounded-full border border-white/[0.03] border-dashed" />
         <div className="w-[34%] h-[34%] rounded-full border border-white/[0.02]" />
       </div>
@@ -145,7 +145,7 @@ export default function Caduceus3DViewport({ t, lang = 'id' }) {
       {/* 2. Top View Controls Overlay (Toggle between 3D Caduceus and Photo Model) */}
       <div className="absolute top-3 inset-x-3 z-30 flex items-center justify-between pointer-events-auto">
         <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#141414]/90 backdrop-blur-md border border-[#262626] text-[10px] font-semibold tracking-wider text-[#EDEDED] shadow-sm">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-ping" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
           <span className="text-[#10B981]">ONLINE</span>
           <span className="text-[#444748]">|</span>
           <span className="text-[#8A8A8A] font-mono text-[9px]">CHROMIUM_GL</span>
@@ -264,7 +264,7 @@ export default function Caduceus3DViewport({ t, lang = 'id' }) {
                   src={caduceusImg}
                   alt="Simbol Medis Caduceus 3D Krom Perak"
                   draggable={false}
-                  className="w-full h-full object-contain filter drop-shadow-[0_16px_28px_rgba(0,0,0,0.95)] drop-shadow-[0_0_24px_rgba(255,255,255,0.22)] brightness-105 contrast-105 pointer-events-none select-none transition-filter duration-300"
+                  className="w-full h-full object-contain filter drop-shadow-[0_16px_28px_rgba(0,0,0,0.85)] brightness-105 contrast-105 pointer-events-none select-none transition-filter duration-300"
                   style={{
                     transform: 'translateZ(30px)',
                   }}
@@ -292,10 +292,7 @@ export default function Caduceus3DViewport({ t, lang = 'id' }) {
 
       {/* 4. Bottom Viewport HUD Pill Overlay */}
       <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center justify-center gap-2 bg-[#141414]/90 backdrop-blur-md border border-[#333333] px-3.5 py-1 rounded-full text-[10.5px] font-medium text-[#EDEDED] shadow-xl whitespace-nowrap pointer-events-none transition-transform duration-300 group-hover:scale-105">
-        <span className="relative flex h-2 w-2 shrink-0">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10B981] opacity-75" />
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10B981]" />
-        </span>
+        <span className="relative inline-flex h-2 w-2 shrink-0 rounded-full bg-[#10B981]" />
         <span className="tracking-wide font-semibold text-white">
           {viewMode === 'caduceus'
             ? 'Caduceus 3D'
